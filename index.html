@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Blue Button API Application Developer Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Blue Button API</h1>
+      <h2 class="project-tagline">Developer Documentation (DRAFT)</h2>
+      <a href="https://github.com/TransparentHealth/blue-button-developer-docs" class="btn">View on GitHub</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h3>
+
+<p>
+  This DRAFT document outlines the RESTful API calls your application can make on behalf of
+  users (i.e. beneficiaries ). An OAuth2 application client_id and a OAuth2 user token
+  are required to execute these API calls.
+
+This API consists of these Functions:</p>
+
+<p>
+  <ul>
+    <li><a href="#get-user-profile-openid-connect">Get User's Profile Information as OpenIDConnect</li>
+    <li><a href="#get-user-profile">Get User's Profile Information as in FHIR&reg</li>
+    <li><a href="#get-eob">Get User's ExplanationOfBenefit Record(s) in FHIR&reg;</li>
+    <li><a href="#get-patient">Get User's Patient Record in FHIR&reg; </a> </li>
+  </ul>  
+</p>
+
+
+<h3>
+<a id="get-user-profile-openid-connect" class="anchor" href=-openid-connect#get-user-profile-openid-connect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User Profile</h3>
+
+<p><pre>HTTP  GET /connect/userinfo </pre> </p>
+
+<p>The above URL fetches the user's basic account information.  This is most often used when creating an account within your application,
+An HTTP GET is called and the response is returned as JSON. A sample response is as follows: </p>
+<p>
+<pre>
+{
+  "sub": "fflinstone",
+  "prefered_username": "fflinstone",
+  "given_name": "Fred",
+  "family_name:, "Flinstone,
+  "name": "Fred Flinstone",
+  "email": "pebbles-daddy@example.com",
+  "created": "2017-11-28",
+}
+</pre>
+</p>
+
+
+
+<h3>
+<a id="get-eob" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User's ExplanationOfBenefit Record(s)</h3>
+
+
+<p><pre>/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[sub][_format=json | _format=xml]</pre> </p>
+
+
+<p> The ExplanationOfBenefit is an episode of care. The above URL returns the user's personal health information as an <a hreg="http://hl7.org/fhir/2017Jan/explanationofbenefit.html">ExplanationOfBenefit</a>
+<a href="http://www.hl7.org/fhir/"> FHIR </a>
+<a href="http://build.fhir.org/resourcelist.html">resource</a> according to
+<a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. The record identifier corresponding to "me" is set by the server so this value is arbitrary and therefore could be anything.
+As a security measure the date of birth, SSN, and HICN are not provided. If the "_format" option is omitted, then JSON is returned by default.
+Below is a sample JSON response:</p>
+
+<pre>
+{
+  "resourceType": "ExplanationOfBenefit",
+  "id": "EB3500",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ExplanationOfBenefit</div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.BenefitsInc.com/fhir/explanationofbenefit",
+      "value": "987654321"
+    }
+  ],
+  "status": "active",
+  "type": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ex-claimtype",
+        "code": "oral"
+      }
+    ]
+  },
+  "patient": {
+    "reference": "Patient/pat1"
+  },
+  "created": "2014-08-16",
+  "organization": {
+    "reference": "Organization/2"
+  },
+  "claim": {
+    "reference": "Claim/100150"
+  },
+  "claimResponse": {
+    "reference": "ClaimResponse/R3500"
+  },
+  "outcome": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/remittance-outcome",
+        "code": "complete"
+      }
+    ]
+  },
+  "disposition": "Claim settled as per contract.",
+  "careTeam": [
+    {
+      "sequence": 1,
+      "provider": {
+        "reference": "Practitioner/example"
+      }
+    }
+  ],
+  "insurance": {
+    "coverage": {
+      "reference": "Coverage/9876B1"
+    }
+  },
+  "item": [
+    {
+      "sequence": 1,
+      "careTeamLinkId": [
+        1
+      ],
+      "service": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/service-uscls",
+            "code": "1200"
+          }
+        ]
+      },
+      "servicedDate": "2014-08-16",
+      "unitPrice": {
+        "value": 135.57,
+        "system": "urn:iso:std:iso:4217",
+        "code": "USD"
+      },
+      "net": {
+        "value": 135.57,
+        "system": "urn:iso:std:iso:4217",
+        "code": "USD"
+      },
+      "adjudication": [
+        {
+          "category": {
+            "coding": [
+              {
+                "code": "eligible"
+              }
+            ]
+          },
+          "amount": {
+            "value": 120.00,
+            "system": "urn:iso:std:iso:4217",
+            "code": "USD"
+          }
+        },
+        {
+          "category": {
+            "coding": [
+              {
+                "code": "eligpercent"
+              }
+            ]
+          },
+          "value": 0.80
+        },
+        {
+          "category": {
+            "coding": [
+              {
+                "code": "benefit"
+              }
+            ]
+          },
+          "amount": {
+            "value": 96.00,
+            "system": "urn:iso:std:iso:4217",
+            "code": "USD"
+          }
+        }
+      ]
+    }
+  ],
+  "totalCost": {
+    "value": 135.57,
+    "system": "urn:iso:std:iso:4217",
+    "code": "USD"
+  },
+  "totalBenefit": {
+    "value": 96.00,
+    "system": "urn:iso:std:iso:4217",
+    "code": "USD"
+  }
+}
+</pre>
+
+<h3>
+<a id="get-patent" class="anchor" href="#get-patient" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User's Patient Record</h3>
+
+<p><p><pre> HTTP  GET /bluebutton/fhir/v1/Patient/[sub][?_format=json | ?_format=xml]</pre> </p>
+
+<p> The above Patient URL returns the user's personal health information as a <a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">Patient</a>
+<a href="http://www.hl7.org/fhir/"> FHIR </a>
+<a href="http://build.fhir.org/resourcelist.html">resource</a> according to
+<a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. The record identifier corresponding to "me" is set by the server so it is arbitrary.
+"me" could replaced with anything.
+ If the _format option is omitted, then JSON is returned by default.
+As a security measure the date of birth, SSN, and HICN are not provided.
+
+Below is a sample JSON response:</p>
+.
+
+<pre>
+{
+  "resourceType": "Patient",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <table>\n        \n        <tbody>\n          \n          <tr>\n            \n            <td>Name</td>\n            \n            <td>Peter James \n              <b>Chalmers</b> (&quot;Jim&quot;)\n            </td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Address</td>\n            \n            <td>534 Erewhon, Pleasantville, Vic, 3999</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Contacts</td>\n            \n            <td>Home: unknown. Work: (03) 5555 6473</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>MRN: 12345 (Acme Healthcare)</td>\n          \n          </tr>\n        \n        </tbody>\n      \n      </table>    \n    \n    </div>"
+  },
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v2/0203",
+            "code": "MR"
+          }
+        ]
+      },
+      "system": "urn:oid:1.2.36.146.595.217.0.1",
+      "value": "12345",
+      "period": {
+        "start": "2001-05-06"
+      },
+      "assigner": {
+        "display": "Acme Healthcare"
+      }
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Chalmers",
+      "given": [
+        "Peter",
+        "James"
+      ]
+    },
+    {
+      "use": "usual",
+      "given": [
+        "Jim"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "use": "home"
+    },
+    {
+      "system": "phone",
+      "value": "(03) 5555 6473",
+      "use": "work"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-12-25",
+  "_birthDate": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+        "valueDateTime": "1974-12-25T14:35:45-05:00"
+      }
+    ]
+  },
+  "deceasedBoolean": false,
+  "address": [
+    {
+      "use": "home",
+      "type": "both",
+      "line": [
+        "534 Erewhon St"
+      ],
+      "city": "PleasantVille",
+      "district": "Rainbow",
+      "state": "Vic",
+      "postalCode": "3999",
+      "period": {
+        "start": "1974-12-25"
+      }
+    }
+  ],
+  "contact": [
+    {
+      "relationship": [
+        {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/patient-contact-relationship",
+              "code": "partner"
+            }
+          ]
+        }
+      ],
+      "name": {
+        "family": "du Marché",
+        "_family": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+              "valueString": "VV"
+            }
+          ]
+        },
+        "given": [
+          "Bénédicte"
+        ]
+      },
+      "telecom": [
+        {
+          "system": "phone",
+          "value": "+33 (237) 998327"
+        }
+      ],
+      "address": {
+        "use": "home",
+        "type": "both",
+        "line": [
+          "534 Erewhon St"
+        ],
+        "city": "PleasantVille",
+        "district": "Rainbow",
+        "state": "Vic",
+        "postalCode": "3999",
+        "period": {
+          "start": "1974-12-25"
+        }
+      },
+      "gender": "female",
+      "period": {
+        "start": "2012"
+      }
+    }
+  ],
+  "managingOrganization": {
+    "reference": "Organization/1"
+  }
+}  
+</pre>
+
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p> @aviars @ekivemark @karldavis | Comments and pull request welcome :) </p>
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p> Contact: Alan Viars @aviars , Mark Scrimshire @ekivemark , or Karl Davis @karldavis</p>
+  
+  </body>
+</html>
