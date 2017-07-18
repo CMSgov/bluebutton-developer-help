@@ -2,17 +2,17 @@
 
 Questions often asked by developers when looking at integrating a new API   include:
 1. [Where can I find the API documentation?](#where-can-i-find-the-api-documentation)
-2. [What protocols are used by the Blue Button API?](#What-protocols-are-used-by-the-Blue-Button-API)
-3. [What format is the data published in?](#What-format-is-the-data-published-in)
-4. [Do I need to register my application?](#Do-I-need-to-register-my-application)
-5. [How do I register as a Developer?](#How-do-I-register-as-a-Developer)
-6. [What is a typical scenario for using the API?](#What-is-a-typical-scenario-for-using-the-API)
-7. [What are the requirements for my environment?](#What-are-the-requirements-for-my-environment)
-8. [What are the data implications for ACOs when using BBAPI?](#What-are-the-data-implications-for-ACOs-when-using-BBAPI)
-9. [What are the data implications for any organization with a registered BBAPI application?](#What-are-the-data-implications-for-any-organization-with-a-registered-BBAPI-application)
-10. [Are there any restrictions on development environments I can use?](#Are-there-any-restrictions-on-development-environments-I-can-use)
-11. [Is there a test system I can use?](#Is-there-a-test-system-I-can-use)
-12. [How often is BBAPI information updated?](#How-often-is=BBAPI-information-updated)
+2. [What protocols are used by the Blue Button API?](#what-protocols-are-used-by-the-blue-button-api)
+3. [What format is the data published in?](#what-format-is-the-data-published-in)
+4. [Do I need to register my application?](#do-i-need-to-register-my-application)
+5. [How do I register as a Developer?](#how-do-i-register-as-a-developer)
+6. [What is a typical scenario for using the API?](#what-is-a-typical-scenario-for-using-the-api)
+7. [What are the requirements for my environment?](#what-are-the-requirements-for-my-environment)
+8. [What are the data implications for ACOs when using BBAPI?](#what-are-the-data-implications-for-acos-when-using-bbapi)
+9. [What are the data implications for any organization with a registered BBAPI application?](#what-are-the-data-implications-for-any-organization-with-a-registered-bbapi-application)
+10. [Are there any restrictions on development environments I can use?](#are-there-any-restrictions-on-development-environments-i-can-use)
+11. [Is there a test system I can use?](#is-there-a-test-system-i-can-use)
+12. [How often is BBAPI information updated?](#how-often-is-bbapi-information-updated)
 
 ## Where can I find the API documentation?
 If you are reading this online then you have already found the Blue Button API (BBAPI) developer documentation. Otherwise point your browser at:
