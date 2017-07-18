@@ -1,4 +1,5 @@
-Developer - Getting Started
+# Developer - Getting Started with BBAPI
+
 Questions often asked by developers when looking at integrating a new API   include:
 	- [Where can I find the API documentation](#Where-can-I-find-the-API-documentation?)?
 	- [What protocols are used by the Blue Button API?](What-protocols-are-used-by-the-Blue-Button-API?)
