@@ -1,7 +1,7 @@
 # Developer - Getting Started with BBAPI
 
 Questions often asked by developers when looking at integrating a new API   include:
-1. [Where can I find the API documentation?](#Where can I find the API documentation?)
+1. [[Where can I find the API documentation?](#where-can-i-find-the-api-documentation)]
 2. [What protocols are used by the Blue Button API?][2]
 3. [What format is the data published in?][3]
 * Do I need to register my application?
