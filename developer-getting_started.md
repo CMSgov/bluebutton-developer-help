@@ -1,18 +1,18 @@
 # Developer - Getting Started with BBAPI
 
 Questions often asked by developers when looking at integrating a new API   include:
-	- [Where can I find the API documentation](#Where-can-I-find-the-API-documentation?)?
-	- [What protocols are used by the Blue Button API?](What-protocols-are-used-by-the-Blue-Button-API?)
-	- What format is the data published in?
-	- Do I need to register my application?
-	- How do I register as a Developer?
-	- What is a typical scenario for using the API?
-	- What are the requirements for my environment?
-	- What are the data implications for ACOs when using BBAPI?
-	- What are the data implications for any organization with a registered BBAPI application?
-	- Are there any restrictions on development environments I can use?
-	- Is there a test system I can use?
-	- How often is BBAPI information updated?
+* [Where can I find the API documentation](#Where-can-I-find-the-API-documentation?)?
+* [What protocols are used by the Blue Button API?](What-protocols-are-used-by-the-Blue-Button-API?)
+* What format is the data published in?
+* Do I need to register my application?
+* How do I register as a Developer?
+* What is a typical scenario for using the API?
+* What are the requirements for my environment?
+* What are the data implications for ACOs when using BBAPI?
+* What are the data implications for any organization with a registered BBAPI application?
+* Are there any restrictions on development environments I can use?
+* Is there a test system I can use?
+* How often is BBAPI information updated?
 
 ## Where can I find the API documentation?
 If you are reading this online then you have already found the Blue Button API (BBAPI) developer documentation. Otherwise point your browser at:
