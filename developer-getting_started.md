@@ -1,9 +1,9 @@
 # Developer - Getting Started with BBAPI
 
 Questions often asked by developers when looking at integrating a new API   include:
-* [Where can I find the API documentation](#Where-can-I-find-the-API-documentation?)?
-* [What protocols are used by the Blue Button API?](What-protocols-are-used-by-the-Blue-Button-API?)
-* What format is the data published in?
+1. [Where can I find the API documentation?][1]
+2. [What protocols are used by the Blue Button API?][2]
+3. [What format is the data published in?][3]
 * Do I need to register my application?
 * How do I register as a Developer?
 * What is a typical scenario for using the API?
@@ -14,18 +14,18 @@ Questions often asked by developers when looking at integrating a new API   incl
 * Is there a test system I can use?
 * How often is BBAPI information updated?
 
-## Where can I find the API documentation?
+## [1] Where can I find the API documentation?
 If you are reading this online then you have already found the Blue Button API (BBAPI) developer documentation. Otherwise point your browser at:
 [Blue Button API Application Developer Documentation](https://hhsidealab.github.io/bluebutton-developer-help/)
 https://hhsidealab.github.io/bluebutton-developer-help/
 
-## What protocols are used by the Blue Button API?
+## [2] What protocols are used by the Blue Button API?
 BBAPI is built using some key specifications and protocols. These include:
 	- [OAuth2.0](https://oauth.net/getting-started/) for Access Authorization.
 	- [HL7 Fast Healthcare Interoperability Resource](https://www.hl7.org/fhir/) (FHIR) specification.
 	- [Pre OAuth Entity Trust](https://github.com/hhsidealab/POET) (POET) Application Endorsement Protocol
 	 
-## What format is the data published in?
+## [3] What format is the data published in?
 BBAPI provides data in two formats:
 	- [JSON](http://www.json.org)
 	- [XML](http://www.xmlfiles.com/xml/xml_intro.asp)
