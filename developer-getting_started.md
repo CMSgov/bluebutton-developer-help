@@ -1,31 +1,31 @@
 # Developer - Getting Started with BBAPI
 
 Questions often asked by developers when looking at integrating a new API   include:
-1. [[Where can I find the API documentation?](#where-can-i-find-the-api-documentation)]
-2. [What protocols are used by the Blue Button API?][2]
-3. [What format is the data published in?][3]
-* Do I need to register my application?
-* How do I register as a Developer?
-* What is a typical scenario for using the API?
-* What are the requirements for my environment?
-* What are the data implications for ACOs when using BBAPI?
-* What are the data implications for any organization with a registered BBAPI application?
-* Are there any restrictions on development environments I can use?
-* Is there a test system I can use?
-* How often is BBAPI information updated?
+1. [Where can I find the API documentation?](#where-can-i-find-the-api-documentation)
+2. [What protocols are used by the Blue Button API?](#What-protocols-are-used-by-the-Blue-Button-API?)
+3. [What format is the data published in?](#What-format-is-the-data-published-in?)
+4. [Do I need to register my application?](#Do-I-need-to-register-my-application?)
+5. [How do I register as a Developer?](#How-do-I-register-as-a-Developer?)
+6. [What is a typical scenario for using the API?](#What-is-a-typical-scenario-for-using-the-API)
+7. [What are the requirements for my environment?](#What-are-the-requirements-for-my-environment?)
+8. [What are the data implications for ACOs when using BBAPI?](#What-are-the-data-implications-for-ACOs-when-using-BBAPI?)
+9. [What are the data implications for any organization with a registered BBAPI application?](#What-are-the-data-implications-for-any-organization-with-a-registered-BBAPI-application?)
+10. [Are there any restrictions on development environments I can use?](#Are-there-any-restrictions-on-development-environments-I-can-use?)
+11. [Is there a test system I can use?](#Is-there-a-test-system-I-can-use?)
+12. [How often is BBAPI information updated?](#How-often-is=BBAPI-information-updated?)
 
 ## Where can I find the API documentation?
 If you are reading this online then you have already found the Blue Button API (BBAPI) developer documentation. Otherwise point your browser at:
 [Blue Button API Application Developer Documentation](https://hhsidealab.github.io/bluebutton-developer-help/)
 https://hhsidealab.github.io/bluebutton-developer-help/
 
-## [2] What protocols are used by the Blue Button API?
+## What protocols are used by the Blue Button API?
 BBAPI is built using some key specifications and protocols. These include:
 	- [OAuth2.0](https://oauth.net/getting-started/) for Access Authorization.
 	- [HL7 Fast Healthcare Interoperability Resource](https://www.hl7.org/fhir/) (FHIR) specification.
 	- [Pre OAuth Entity Trust](https://github.com/hhsidealab/POET) (POET) Application Endorsement Protocol
 	 
-## [3] What format is the data published in?
+## What format is the data published in?
 BBAPI provides data in two formats:
 	- [JSON](http://www.json.org)
 	- [XML](http://www.xmlfiles.com/xml/xml_intro.asp)
@@ -78,11 +78,7 @@ In order to take advantage of BBAPI and access a beneficiary's Medicare claims i
 	* An application that is registered with BBAPI has no access to beneficiary information until a beneficiary gives an explicit authorization.
 	* The BBAPI platform provides a dashboard for beneficiaries. This enables a beneficiary to revoke access to a registered application at any time.
 	* The BBAPI administration and security team can choose to revoke the key for a registered application, or throttle the number of API calls allowed by an application if suspicious API usage is detected. Revocation or Throttling of an application impacts the ability of a registered application to access the information for any beneficiary that has authorized access to their data. 
-## How often is BBAPI information updated?
-	- Weekly:
-	Part A and Part B
-	- Monthly:
-	Part D
+
 ## Are there any restrictions on development environments I can use?
 You are free to use any development languages for your application. 
 The BBAPI team is working to provide code samples and interaction examples in the following formats:
@@ -94,7 +90,15 @@ The BBAPI team is working to provide code samples and interaction examples in th
 	- Python
 	- PHP
 This is an ongoing process. You are welcome to provide examples for us to incorporate. 
+
 ## Is there a test system I can use?
 BBAPI provides a test system. It has a small subset of synthetic information. 
 The test system can be accessed here:
 http://test.bluebutton.cms.gov
+
+## How often is BBAPI information updated?
+	- Weekly:
+	Part A and Part B
+	- Monthly:
+	Part D
+	
