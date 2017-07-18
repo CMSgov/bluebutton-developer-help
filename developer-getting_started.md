@@ -1,7 +1,7 @@
 # Developer - Getting Started with BBAPI
 
 Questions often asked by developers when looking at integrating a new API   include:
-1. [Where can I find the API documentation?][1]
+1. [Where can I find the API documentation?](#Where can I find the API documentation?)
 2. [What protocols are used by the Blue Button API?][2]
 3. [What format is the data published in?][3]
 * Do I need to register my application?
@@ -14,7 +14,7 @@ Questions often asked by developers when looking at integrating a new API   incl
 * Is there a test system I can use?
 * How often is BBAPI information updated?
 
-## [1] Where can I find the API documentation?
+## Where can I find the API documentation?
 If you are reading this online then you have already found the Blue Button API (BBAPI) developer documentation. Otherwise point your browser at:
 [Blue Button API Application Developer Documentation](https://hhsidealab.github.io/bluebutton-developer-help/)
 https://hhsidealab.github.io/bluebutton-developer-help/
