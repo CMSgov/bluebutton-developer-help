@@ -13,7 +13,7 @@
     <section class="page-header">
       <h1 class="project-name">Blue Button API</h1>
       <h2 class="project-tagline">Developer Documentation (DRAFT)</h2>
-      <a href="https://github.com/TransparentHealth/blue-button-developer-docs" class="btn">View on GitHub</a>
+      <a href="https://github.com/hhsidealab/blue-button-developer-docs" class="btn">View on GitHub</a>
     </section>
 
     <section class="main-content">
@@ -22,15 +22,14 @@
 
 <p>
   This DRAFT document outlines the RESTful API calls your application can make on behalf of
-  users (i.e. beneficiaries ). An OAuth2 application client_id and a OAuth2 user token
+  users (i.e. beneficiaries). An OAuth2 application client_id and a OAuth2 user token
   are required to execute these API calls.
 
 This API consists of these Functions:</p>
 
 <p>
   <ul>
-    <li><a href="#get-user-profile-openid-connect">Get User's Profile Information as OpenIDConnect</li>
-    <li><a href="#get-user-profile">Get User's Profile Information as in FHIR&reg</li>
+    <li><a href="#get-user-profile-openid-connect">Get User's Profile Information as OpenIDConnect userprofile endpoint </li>
     <li><a href="#get-eob">Get User's ExplanationOfBenefit Record(s) in FHIR&reg;</li>
     <li><a href="#get-patient">Get User's Patient Record in FHIR&reg; </a> </li>
   </ul>  
@@ -64,13 +63,14 @@ An HTTP GET is called and the response is returned as JSON. A sample response is
 <a id="get-eob" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User's ExplanationOfBenefit Record(s)</h3>
 
 
-<p><pre>/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[sub][_format=json | _format=xml]</pre> </p>
+<p><pre>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[sub][_format=json | _format=xml]</pre> </p>
 
 
 <p> The ExplanationOfBenefit is an episode of care. The above URL returns the user's personal health information as an <a hreg="http://hl7.org/fhir/2017Jan/explanationofbenefit.html">ExplanationOfBenefit</a>
 <a href="http://www.hl7.org/fhir/"> FHIR </a>
 <a href="http://build.fhir.org/resourcelist.html">resource</a> according to
-<a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. The record identifier corresponding to "me" is set by the server so this value is arbitrary and therefore could be anything.
+<a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. 
+   The record identifier corresponding to "sub" can be anything. A token can only be used to return her or his own data.
 As a security measure the date of birth, SSN, and HICN are not provided. If the "_format" option is omitted, then JSON is returned by default.
 Below is a sample JSON response:</p>
 
@@ -215,13 +215,13 @@ Below is a sample JSON response:</p>
 <h3>
 <a id="get-patent" class="anchor" href="#get-patient" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User's Patient Record</h3>
 
-<p><p><pre> HTTP  GET /bluebutton/fhir/v1/Patient/[sub][?_format=json | ?_format=xml]</pre> </p>
+<p><p><pre> HTTP  GET /protected/bluebutton/fhir/v1/Patient/[sub][?_format=json | ?_format=xml]</pre> </p>
 
 <p> The above Patient URL returns the user's personal health information as a <a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">Patient</a>
 <a href="http://www.hl7.org/fhir/"> FHIR </a>
 <a href="http://build.fhir.org/resourcelist.html">resource</a> according to
 <a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. The record identifier corresponding to "me" is set by the server so it is arbitrary.
-"me" could replaced with anything.
+"sub" could replaced with anything since the client can only return data owned by the access token (i.e. her or his own data).
  If the _format option is omitted, then JSON is returned by default.
 As a security measure the date of birth, SSN, and HICN are not provided.
 
