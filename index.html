@@ -35,7 +35,7 @@ This API consists of these Functions:</p>
 
 <p>
   <ul>
-    <li><a href="#get-oauth2">OAuth Authorization and Token</li>
+    <li><a href="#get-oauth2">OAuth Authorization and Token Endpoints</li>
     <li><a href="#get-user-profile-openid-connect">Get User's Information in OpenIDConnect userprofile format</li>
     <li><a href="#get-eob">Get User's ExplanationOfBenefit Record(s) in FHIR&reg;</li>
     <li><a href="#get-patient">Get User's Patient Record in FHIR&reg; </a> </li>
@@ -45,18 +45,18 @@ This API consists of these Functions:</p>
 
 
 <h3>
-<a id="get-oauth2" class="anchor" href=-openid-connect#get-user-profile-openid-connect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User Profile</h3>
+<a id="get-oauth2" class="anchor" href=#get-oauth2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User Profile</h3>
 
 <p><pre>HTTP  GET /o/authorize </pre> </p>
 <p><pre>HTTP  POST /o/token </pre> </p>
 
-<p>The above URLs implement vanilla OAuth2, Please refer to <a href=https://oauth.net/2/>https://oauth.net/2/</> for
-more information.
+<p>The authorize and token URL endpoints implement vanilla OAuth2. Please refer to <a href=https://oauth.net/2/>https://oauth.net/2/</> for
+more information on the details of OAuth2.
 </p>
 
 
 <h3>
-<a id="get-user-profile-openid-connect" class="anchor" href=-openid-connect#get-user-profile-openid-connect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User Profile</h3>
+<a id="get-user-profile-openid-connect" class="anchor" href=#get-user-profile-openid-connect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User Profile</h3>
 
 <p><pre>HTTP  GET /connect/userinfo </pre> </p>
 
