@@ -73,13 +73,14 @@ An HTTP GET is called and the response is returned as JSON.</p>
   "name": "Fred Flinstone",
   "email": "pebbles-daddy@example.com",
   "created": "2017-11-28",
+  "fhir_id": "123456789",
 }
 </pre>
 </p>
 
 <h3><a id="get-eob" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Episodes of Care for a Beneficiary</h3>
 
-<p><pre>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[sub][_format=json | _format=xml]</pre> </p>
+<p><pre>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[fhir_id][_format=json | _format=xml]</pre> </p>
 
 <p>The above URL returns the Beneficiary's personal health information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
 </p>
@@ -224,7 +225,7 @@ An HTTP GET is called and the response is returned as JSON.</p>
 
 <h3><a id="get-patient" class="anchor" href="#get-patient" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Patient Record for a Beneficiary</h3>
 
-<p><pre> HTTP  GET /protected/bluebutton/fhir/v1/Patient/[sub][?_format=json | ?_format=xml]</pre></p>
+<p><pre> HTTP  GET /protected/bluebutton/fhir/v1/Patient/[fhir_id][?_format=json | ?_format=xml]</pre></p>
 
 <p> The above URL returns the Beneficiary's personal health information as a <a href="http://hl7.org/fhir/explanationofbenefit-examples.html">Patient FHIR Resource</a>.
 </p>
@@ -372,7 +373,7 @@ An HTTP GET is called and the response is returned as JSON.</p>
 
 <h3><a id="get-coverage" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Coverage for a Beneficiary</h3>
 
-<p><pre>/protected/bluebutton/fhir/v1/Coverage/?patient=[sub][_format=json | _format=xml]</pre> </p>
+<p><pre>/protected/bluebutton/fhir/v1/Coverage/?patient=[fhir_id][_format=json | _format=xml]</pre> </p>
 
 <p>The above URL returns the Beneficiary's Coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
 </p>
@@ -446,7 +447,8 @@ An HTTP GET is called and the response is returned as JSON.</p>
 </pre>
 
 <h3>Sample Client Application:</h3>
-<p>The CMS Blue Button Sample Client Application demonstrates how to authenticate to the Blue Buttom API and make subsequent FHIR API calls.</p>
+<p>The CMS Blue Button Sample Client Application demonstrates how to 
+  authenticate to the Blue Buttom API and make subsequent FHIR API calls. It uses the OAuth2 confidential flow.</p>
 <p><a href="https://github.com/HHSIDEAlab/django_bluebutton_client">Download Blue Button Sample Client (Django)</a></p>
 
 <h2><a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support</h2>
