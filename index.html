@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Blue Button API Application Developer Documentation</title>
+    <title>CMS Blue Button API Developer Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -10,57 +10,59 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Blue Button API</h1>
-      <h2 class="project-tagline">Developer Documentation (DRAFT)</h2>
-      <a href="https://github.com/hhsidealab/blue-button-developer-docs" class="btn">View on GitHub</a>
-    </section>
 
-    <section class="main-content">
-      <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h3>
+<section class="main-content">
+<h1><a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CMS Blue Button API</h1>
 
 <p>
-  This DRAFT document outlines the RESTful API calls your application can make on behalf of
-  users (i.e. beneficiaries). An OAuth2 application client_id and a OAuth2 access token, that belongs to a specific user,
-  are required to execute these API calls.</p>
- <p>Production access has not yet begun. We are slowing releasing developer codes for our development and test environment.
-   You can request an invite @ <a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite ">
-   https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite</a>.</p>
-      
-   <p>The prefix for the API endpoints below for testing is:</p>  
-      <p><pre>https://dev.bluebutton.cms.fhirservice.net</pre></p>
-  
-This API consists of these Functions:</p>
-
+  The Centers for Medicare & Medicaid Services (CMS) Blue Button API is a developer-friendly, standards-based, data API that enables Medicare beneficiaries to connect their Medicare claims data to the applications, services, and research programs they trust.
+</p>
 <p>
-  <ul>
-    <li><a href="#get-oauth2">OAuth2 Authorization and Token Endpoints</li>
-    <li><a href="#get-user-profile-openid-connect">Get User's Information in OpenIDConnect userprofile format</li>
-    <li><a href="#get-eob">Get User's ExplanationOfBenefit Record(s) in FHIR&reg;</li>
-    <li><a href="#get-patient">Get User's Patient Record in FHIR&reg; </a> </li>
-     <li><a href="#get-coverage">Get User's Coverage Record(s) in FHIR&reg; </a> </li>
-  </ul>  
+  <li>Enables a Beneficiary to grant your app access to their data via oAuth
+  <li>Gives your app access to three years of claims data for a Beneficiary
+  <li>Uses HL7 FHIR specification
 </p>
 
+<h2>Developer Preview</h2>
+<p>CMS is inviting Developers to provide feedback on the new CMS Blue Button API for the purpose of improved development. Participants in the Developer Preview can build integrations with their software using sample claims data.</p>
+<p>
+<a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Signup for the Developer Preview</a>
+</p>
 
-<h3>
-<a id="get-oauth2" class="anchor" href=#get-oauth2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth2 Authorization and Token Endpoints</h3>
+<h2>Using the API</h2>
 
+<p>Base Request URL:</p>
+<p><pre>https://dev.bluebutton.cms.fhirservice.net</pre></p>
+
+<p>Authorization:</p>
+<p>The authorization and token URL endpoints implement vanilla <a href="https://oauth.net/2/">oAuth2</a>.</p>
 <p><pre>HTTP  GET /o/authorize </pre> </p>
 <p><pre>HTTP  POST /o/token </pre> </p>
 
-<p>The authorization and token URL endpoints implement vanilla OAuth2. Please refer to 
- <a href=https://oauth.net/2/>https://oauth.net/2/</a> for more information on the details of OAuth2.
+<p>API Endpoints:</p>
+<p>
+  <ul>
+    <li><a href="#get-user-profile-openid-connect">Get Profile for a Beneficiary</a></li>
+    <li><a href="#get-eob">Get Episodes of Care for a Beneficiary</a></li>
+    <li><a href="#get-patient">Get Patient Record for a Beneficiary</a></li>
+     <li><a href="#get-coverage">Get Coverage for a Beneficiary</a></li>
+  </ul>
 </p>
 
-<h3>
-<a id="get-user-profile-openid-connect" class="anchor" href=#get-user-profile-openid-connect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User Profile</h3>
+<p>In each of these API Endpoints, the "sub" value is unused since the client can only return data owned by the access token (i.e. her or his own data).
+</p>
+<p>If the _format option is omitted, then JSON is returned by default.
+ </p>
+<p>
+  As a security measure the date of birth, SSN, and HICN are not provided.
+</p>
+
+<h3><a id="get-user-profile-openid-connect" class="anchor" href="#get-user-profile-openid-connect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Profile for a Beneficiary</h3>
 
 <p><pre>HTTP  GET /connect/userinfo </pre> </p>
 
-<p>The above URL fetches the user's basic account information.  This is most often used when creating an account within your application,
-An HTTP GET is called and the response is returned as JSON. A sample response is as follows: </p>
+<p>The above URL fetches the Beneficiary's basic account information.  This is most often used when creating an account within your application,
+An HTTP GET is called and the response is returned as JSON.</p>
 <p>
 <pre>
 {
@@ -75,22 +77,12 @@ An HTTP GET is called and the response is returned as JSON. A sample response is
 </pre>
 </p>
 
-
-
-<h3>
-<a id="get-eob" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User's ExplanationOfBenefit Record(s)</h3>
-
+<h3><a id="get-eob" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Episodes of Care for a Beneficiary</h3>
 
 <p><pre>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[sub][_format=json | _format=xml]</pre> </p>
 
-
-<p> The ExplanationOfBenefit is an episode of care. The above URL returns the user's personal health information as an <a hreg="http://hl7.org/fhir/2017Jan/explanationofbenefit.html">ExplanationOfBenefit</a>
-<a href="http://www.hl7.org/fhir/"> FHIR </a>
-<a href="http://build.fhir.org/resourcelist.html">resource</a> according to
-<a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. 
-   The record identifier corresponding to "sub" can be anything. A token can only be used to return her or his own data.
-As a security measure the date of birth, SSN, and HICN are not provided. If the "_format" option is omitted, then JSON is returned by default.
-Below is a sample JSON response:</p>
+<p>The above URL returns the Beneficiary's personal health information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
+</p>
 
 <pre>
 {
@@ -230,21 +222,12 @@ Below is a sample JSON response:</p>
 }
 </pre>
 
-<h3>
-<a id="get-patent" class="anchor" href="#get-patient" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User's Patient Record</h3>
+<h3><a id="get-patient" class="anchor" href="#get-patient" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Patient Record for a Beneficiary</h3>
 
-<p><p><pre> HTTP  GET /protected/bluebutton/fhir/v1/Patient/[sub][?_format=json | ?_format=xml]</pre> </p>
+<p><pre> HTTP  GET /protected/bluebutton/fhir/v1/Patient/[sub][?_format=json | ?_format=xml]</pre></p>
 
-<p> The above Patient URL returns the user's personal health information as a <a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">Patient</a>
-<a href="http://www.hl7.org/fhir/"> FHIR </a>
-<a href="http://build.fhir.org/resourcelist.html">resource</a> according to
-<a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. The record identifier corresponding to "me" is set by the server so it is arbitrary.
-"sub" could replaced with anything since the client can only return data owned by the access token (i.e. her or his own data).
- If the _format option is omitted, then JSON is returned by default.
-As a security measure the date of birth, SSN, and HICN are not provided.
-
-Below is a sample JSON response:</p>
-.
+<p> The above URL returns the Beneficiary's personal health information as a <a href="http://hl7.org/fhir/explanationofbenefit-examples.html">Patient FHIR Resource</a>.
+</p>
 
 <pre>
 {
@@ -384,25 +367,15 @@ Below is a sample JSON response:</p>
   "managingOrganization": {
     "reference": "Organization/1"
   }
-}  
+}
 </pre>
 
-
-
-<h3>
-<a id="get-coverage" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get User's ExplanationOfBenefit Record(s)</h3>
-
+<h3><a id="get-coverage" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Coverage for a Beneficiary</h3>
 
 <p><pre>/protected/bluebutton/fhir/v1/Coverage/?patient=[sub][_format=json | _format=xml]</pre> </p>
 
-
-<p> The ExplanationOfBenefit is an episode of care. The above URL returns the user's personal health information as an <a hreg="http://hl7.org/fhir/2017Jan/explanationofbenefit.html">ExplanationOfBenefit</a>
-<a href="http://www.hl7.org/fhir/"> FHIR </a>
-<a href="http://build.fhir.org/resourcelist.html">resource</a> according to
-<a href="http://hl7.org/fhir/2017Jan/explanationofbenefit-examples.html">DSTU3</a>. 
-   The record identifier corresponding to "sub" can be anything. A token can only be used to return her or his own data.
-As a security measure the date of birth, SSN, and HICN are not provided. If the "_format" option is omitted, then JSON is returned by default.
-Below is a sample JSON response:</p>
+<p>The above URL returns the Beneficiary's Coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
+</p>
 
 <pre>
 {
@@ -472,18 +445,14 @@ Below is a sample JSON response:</p>
 }
 </pre>
 
+<h3>Sample Client Application:</h3>
+<p>The CMS Blue Button Sample Client Application demonstrates how to authenticate to the Blue Buttom API and make subsequent FHIR API calls.</p>
+<p><a href="https://github.com/HHSIDEAlab/django_bluebutton_client">Download Blue Button Sample Client (Django)</a></p>
 
+<h2><a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support</h2>
 
+<p> The CMS Blue Button API Google Group is where you can interact with one another to ask questions, find answers, leave feedback and
+  share experiences using the CMS Blue Button API.</p>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p> @aviars @ekivemark @karldavis | Comments and pull request welcome :) </p>
-
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p> Contact: Alan Viars @aviars , Mark Scrimshire @ekivemark , or Karl Davis @karldavis</p>
-  
-  </body>
+<p><a href="https://groups.google.com/forum/#!forum/developer-group-for-cms-blue-button-api">Visit the Google Group</a></p>
 </html>
