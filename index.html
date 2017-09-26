@@ -1,460 +1,536 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CMS Blue Button API Developer Documentation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <!-- Update the link path to where your stylesheet file is located. For example: /path/to/your/assets/css/lib/uswds.min.css -->
+    <link rel="stylesheet" href="css/uswds.css">
+    <link rel="shortcut icon" href="img/favicons/favicon-57.png" type="image/x-icon">
   </head>
   <body>
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+  <header class="usa-header usa-header-basic" role="banner">
+    <!-- Gov banner BEGIN -->
+    <div class="usa-banner">
+      <div class="usa-accordion">
+        <header class="usa-banner-header">
+          <div class="usa-grid usa-banner-inner">
+          <img src="img/favicons/favicon-57.png" alt="U.S. flag">
+          <!--
+          <p>An official website of the United States government</p>
+          <button class="usa-accordion-button usa-banner-button"
+            aria-expanded="false" aria-controls="gov-banner">
+            <span class="usa-banner-button-text">Here's how you know</span>
+          </button>
+        -->
+          </div>
+        </header>
+        <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+          <div class="usa-banner-guidance-gov usa-width-one-half">
+            <img class="usa-banner-icon usa-media_block-img" src="/assets/img/icon-dot-gov.svg" alt="Dot gov">
+            <div class="usa-media_block-body">
+              <p>
+                <strong>The .gov means it’s official.</strong>
+                <br>
+                Federal government websites always use a .gov or .mil domain. Before sharing sensitive information online, make sure you’re on a .gov or .mil site by inspecting your browser’s address (or “location”) bar.
+              </p>
+            </div>
+          </div>
+          <div class="usa-banner-guidance-ssl usa-width-one-half">
+            <img class="usa-banner-icon usa-media_block-img" src="/assets/img/icon-https.svg" alt="SSL">
+            <div class="usa-media_block-body">
+              <p>This site is also protected by an SSL (Secure Sockets Layer) certificate that’s been signed by the U.S. government. The <strong>https://</strong> means all transmitted data is encrypted  — in other words, any information or browsing history that you provide is transmitted securely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Gov banner END -->
 
-<section class="main-content">
-<h1><a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CMS Blue Button API</h1>
+  <div class="usa-overlay"></div>
+  <main class="usa-grid usa-section usa-content usa-layout-docs" id="main-content">
 
-<p>
-  The Centers for Medicare & Medicaid Services (CMS) Blue Button API is a developer-friendly, standards-based, data API that enables Medicare beneficiaries to connect their Medicare claims data to the applications, services, and research programs they trust.
-</p>
-<p>
-  <li>Enables a Beneficiary to grant your app access to their data via OAuth
-  <li>Gives your app access to three years of claims data for a Beneficiary
-  <li>Uses HL7 FHIR specification
-</p>
+    <aside class="usa-width-one-fourth usa-layout-docs-sidenav">
+      <ul class="usa-sidenav-list">
+        <li>
+          <a class="usa-current" href="javascript:void(0);">CMS Blue Button API</a>
+        </li>
+        <li>
+          <a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Signup for the Developer Preview</a>
+        </li>
+        <li>
+          <a href="https://groups.google.com/forum/#!forum/developer-group-for-cms-blue-button-api">Join the Google Group</a>
+        </li>
+        <li>
+          <a href="https://dev.bluebutton.cms.fhirservice.net/devdocs/">Interactive Docs</a>
+        </li>
+      </ul>
+    </aside>
 
-<h2>Developer Preview</h2>
-<p>CMS is inviting Developers to provide feedback on the new CMS Blue Button API for the purpose of improved development. Participants in the Developer Preview can build integrations with their software using sample claims data.</p>
-<p>
-<a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Signup for the Developer Preview</a>
-</p>
+    <div class="usa-width-three-fourths usa-layout-docs-main_content">
+      <h1>CMS Blue Button API</h1>
+      <p class="usa-font-lead">
+        The Centers for Medicare & Medicaid Services (CMS) Blue Button API is a developer-friendly, standards-based, data API that enables Medicare beneficiaries to connect their Medicare claims data to the applications, services, and research programs they trust.
+      </p>
 
-<h2>Using the API</h2>
+      <h2 id="section-heading-h2">Join the Developer Preview</h2>
+      <p>CMS is inviting Developers to provide feedback on the new CMS Blue Button API for the purpose of improved development. Participants in the Developer Preview can build integrations with their software using sample claims data.</p>
+      <ul>
+        <li>Enables a Beneficiary to grant your app access to their data via OAuth
+        <li>Gives your app access to three years of Part A, B and D claims data for a Beneficiary
+        <li>Uses HL7 FHIR specification
+      </ul>
+      <p><a class="usa-button usa-button" href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Signup for the Developer Preview</a></p>
 
-<p>Base Request URL:</p>
-<p><pre>https://dev.bluebutton.cms.fhirservice.net</pre></p>
+      <h3 id="section-heading-h3">Using the API</h3>
+      <p>During the Developer Preview, you will be able to query a sandbox environment populated with ficticious Beneficiary data.</p>
 
-<p>Authorization:</p>
-<p>The authorization and token URL endpoints implement vanilla <a href="https://oauth.net/2/">OAuth2</a>.</p>
-<p><pre>HTTP  GET /o/authorize </pre> </p>
-<p><pre>HTTP  POST /o/token </pre> </p>
+      <p>Base Request URL:</p>
+      <pre><code>https://dev.bluebutton.cms.fhirservice.net</code></pre>
 
-<p>API Endpoints:</p>
-<p>
-  <ul>
-    <li><a href="#get-user-profile-openid-connect">Get Profile for a Beneficiary</a></li>
-    <li><a href="#get-eob">Get Episodes of Care for a Beneficiary</a></li>
-    <li><a href="#get-patient">Get Patient Record for a Beneficiary</a></li>
-     <li><a href="#get-coverage">Get Coverage for a Beneficiary</a></li>
-  </ul>
-</p>
+      <p>Authorization:</p>
+      <p>The authorization and token URL endpoints implement vanilla <a href="https://oauth.net/2/">OAuth2</a>.</p>
+      <pre><code>HTTP  GET /o/authorize </code> </pre>
+      <pre><code>HTTP  POST /o/token </code> </pre>
 
-<p>In each of these API Endpoints, the "sub" value is unused since the client can only return data owned by the access token (i.e. her or his own data).
-</p>
-<p>If the _format option is omitted, then JSON is returned by default.
- </p>
-<p>
-  As a security measure the date of birth, SSN, and HICN are not provided.
-</p>
+      <p>API Endpoints:</p>
+      <p>
+        <ul>
+          <li><a href="#get-user-profile-openid-connect">Get Profile for a Beneficiary</a></li>
+          <li><a href="#get-eob">Get Episodes of Care for a Beneficiary</a></li>
+          <li><a href="#get-patient">Get Patient Record for a Beneficiary</a></li>
+           <li><a href="#get-coverage">Get Coverage for a Beneficiary</a></li>
+        </ul>
+      </p>
 
-<h3><a id="get-user-profile-openid-connect" class="anchor" href="#get-user-profile-openid-connect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Profile for a Beneficiary</h3>
+      <p>In each of these API Endpoints, the "sub" value is unused since the client can only return data owned by the access token (i.e. her or his own data).</p>
+      <p>If the _format option is omitted, then JSON is returned by default.</p>
+      <p>As a security measure the date of birth, SSN, and HICN are not provided.</p>
 
-<p><pre>HTTP  GET /connect/userinfo </pre> </p>
+      <a name="get-user-profile-openid-connect"></a>
+      <h3 id="section-heading-h3">Get Profile for a Beneficiary</h3>
 
-<p>The above URL fetches the Beneficiary's basic account information.  This is most often used when creating an account within your application,
-An HTTP GET is called and the response is returned as JSON.</p>
-<p>
-<pre>
-{
-  "sub": "fflinstone",
-  "prefered_username": "fflinstone",
-  "given_name": "Fred",
-  "family_name:, "Flinstone,
-  "name": "Fred Flinstone",
-  "email": "pebbles-daddy@example.com",
-  "created": "2017-11-28",
-  "fhir_id": "123456789",
-}
-</pre>
-</p>
+      <pre><code>HTTP  GET /connect/userinfo </code></pre>
 
-<h3><a id="get-eob" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Episodes of Care for a Beneficiary</h3>
+      <p>The above URL fetches the Beneficiary's basic account information.  This is most often used when creating an account within your application,
+      An HTTP GET is called and the response is returned as JSON.</p>
 
-<p><pre>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[fhir_id][_format=json | _format=xml]</pre> </p>
-
-<p>The above URL returns the Beneficiary's personal health information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
-</p>
-
-<pre>
-{
-  "resourceType": "ExplanationOfBenefit",
-  "id": "EB3500",
-  "text": {
-    "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ExplanationOfBenefit</div>"
-  },
-  "identifier": [
-    {
-      "system": "http://www.BenefitsInc.com/fhir/explanationofbenefit",
-      "value": "987654321"
-    }
-  ],
-  "status": "active",
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/ex-claimtype",
-        "code": "oral"
-      }
-    ]
-  },
-  "patient": {
-    "reference": "Patient/pat1"
-  },
-  "created": "2014-08-16",
-  "organization": {
-    "reference": "Organization/2"
-  },
-  "claim": {
-    "reference": "Claim/100150"
-  },
-  "claimResponse": {
-    "reference": "ClaimResponse/R3500"
-  },
-  "outcome": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/remittance-outcome",
-        "code": "complete"
-      }
-    ]
-  },
-  "disposition": "Claim settled as per contract.",
-  "careTeam": [
-    {
-      "sequence": 1,
-      "provider": {
-        "reference": "Practitioner/example"
-      }
-    }
-  ],
-  "insurance": {
-    "coverage": {
-      "reference": "Coverage/9876B1"
-    }
-  },
-  "item": [
-    {
-      "sequence": 1,
-      "careTeamLinkId": [
-        1
-      ],
-      "service": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/service-uscls",
-            "code": "1200"
-          }
-        ]
-      },
-      "servicedDate": "2014-08-16",
-      "unitPrice": {
-        "value": 135.57,
-        "system": "urn:iso:std:iso:4217",
-        "code": "USD"
-      },
-      "net": {
-        "value": 135.57,
-        "system": "urn:iso:std:iso:4217",
-        "code": "USD"
-      },
-      "adjudication": [
+      <pre>
+        <code>
         {
-          "category": {
+          "sub": "fflinstone",
+          "prefered_username": "fflinstone",
+          "given_name": "Fred",
+          "family_name:, "Flinstone,
+          "name": "Fred Flinstone",
+          "email": "pebbles-daddy@example.com",
+          "created": "2017-11-28",
+          "fhir_id": "123456789",
+        }
+        </code>
+      </pre>
+
+      <a name="get-eob"></a>
+      <h3 id="section-heading-h3">Get Episodes of Care for a Beneficiary</h3>
+
+      <pre>
+        <code>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[fhir_id][_format=json | _format=xml]</code>
+      </pre>
+
+      <p>The above URL returns the Beneficiary's personal health information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.</p>
+
+      <pre>
+        <code>
+        {
+          "resourceType": "ExplanationOfBenefit",
+          "id": "EB3500",
+          "text": {
+            "status": "generated",
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ExplanationOfBenefit</div>"
+          },
+          "identifier": [
+            {
+              "system": "http://www.BenefitsInc.com/fhir/explanationofbenefit",
+              "value": "987654321"
+            }
+          ],
+          "status": "active",
+          "type": {
             "coding": [
               {
-                "code": "eligible"
+                "system": "http://hl7.org/fhir/ex-claimtype",
+                "code": "oral"
               }
             ]
           },
-          "amount": {
-            "value": 120.00,
+          "patient": {
+            "reference": "Patient/pat1"
+          },
+          "created": "2014-08-16",
+          "organization": {
+            "reference": "Organization/2"
+          },
+          "claim": {
+            "reference": "Claim/100150"
+          },
+          "claimResponse": {
+            "reference": "ClaimResponse/R3500"
+          },
+          "outcome": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/remittance-outcome",
+                "code": "complete"
+              }
+            ]
+          },
+          "disposition": "Claim settled as per contract.",
+          "careTeam": [
+            {
+              "sequence": 1,
+              "provider": {
+                "reference": "Practitioner/example"
+              }
+            }
+          ],
+          "insurance": {
+            "coverage": {
+              "reference": "Coverage/9876B1"
+            }
+          },
+          "item": [
+            {
+              "sequence": 1,
+              "careTeamLinkId": [
+                1
+              ],
+              "service": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/service-uscls",
+                    "code": "1200"
+                  }
+                ]
+              },
+              "servicedDate": "2014-08-16",
+              "unitPrice": {
+                "value": 135.57,
+                "system": "urn:iso:std:iso:4217",
+                "code": "USD"
+              },
+              "net": {
+                "value": 135.57,
+                "system": "urn:iso:std:iso:4217",
+                "code": "USD"
+              },
+              "adjudication": [
+                {
+                  "category": {
+                    "coding": [
+                      {
+                        "code": "eligible"
+                      }
+                    ]
+                  },
+                  "amount": {
+                    "value": 120.00,
+                    "system": "urn:iso:std:iso:4217",
+                    "code": "USD"
+                  }
+                },
+                {
+                  "category": {
+                    "coding": [
+                      {
+                        "code": "eligpercent"
+                      }
+                    ]
+                  },
+                  "value": 0.80
+                },
+                {
+                  "category": {
+                    "coding": [
+                      {
+                        "code": "benefit"
+                      }
+                    ]
+                  },
+                  "amount": {
+                    "value": 96.00,
+                    "system": "urn:iso:std:iso:4217",
+                    "code": "USD"
+                  }
+                }
+              ]
+            }
+          ],
+          "totalCost": {
+            "value": 135.57,
             "system": "urn:iso:std:iso:4217",
             "code": "USD"
-          }
-        },
-        {
-          "category": {
-            "coding": [
-              {
-                "code": "eligpercent"
-              }
-            ]
           },
-          "value": 0.80
-        },
-        {
-          "category": {
-            "coding": [
-              {
-                "code": "benefit"
-              }
-            ]
-          },
-          "amount": {
+          "totalBenefit": {
             "value": 96.00,
             "system": "urn:iso:std:iso:4217",
             "code": "USD"
           }
         }
-      ]
-    }
-  ],
-  "totalCost": {
-    "value": 135.57,
-    "system": "urn:iso:std:iso:4217",
-    "code": "USD"
-  },
-  "totalBenefit": {
-    "value": 96.00,
-    "system": "urn:iso:std:iso:4217",
-    "code": "USD"
-  }
-}
-</pre>
+        </code>
+      </pre>
 
-<h3><a id="get-patient" class="anchor" href="#get-patient" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Patient Record for a Beneficiary</h3>
+      <a name="get-patient"></a>
+      <h3 id="section-heading-h3">Get Patient Record for a Beneficiary</h3>
 
-<p><pre> HTTP  GET /protected/bluebutton/fhir/v1/Patient/[fhir_id][?_format=json | ?_format=xml]</pre></p>
+      <pre>
+          <code>HTTP GET /protected/bluebutton/fhir/v1/Patient/[fhir_id][?_format=json | ?_format=xml]</code>
+      </pre>
 
-<p> The above URL returns the Beneficiary's personal health information as a <a href="http://hl7.org/fhir/explanationofbenefit-examples.html">Patient FHIR Resource</a>.
-</p>
+      <p>The above URL returns the Beneficiary's personal health information as a <a href="http://hl7.org/fhir/explanationofbenefit-examples.html">Patient FHIR Resource</a>.</p>
 
-<pre>
-{
-  "resourceType": "Patient",
-  "id": "example",
-  "text": {
-    "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <table>\n        \n        <tbody>\n          \n          <tr>\n            \n            <td>Name</td>\n            \n            <td>Peter James \n              <b>Chalmers</b> (&quot;Jim&quot;)\n            </td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Address</td>\n            \n            <td>534 Erewhon, Pleasantville, Vic, 3999</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Contacts</td>\n            \n            <td>Home: unknown. Work: (03) 5555 6473</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>MRN: 12345 (Acme Healthcare)</td>\n          \n          </tr>\n        \n        </tbody>\n      \n      </table>    \n    \n    </div>"
-  },
-  "identifier": [
-    {
-      "use": "usual",
-      "type": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/v2/0203",
-            "code": "MR"
+      <pre>
+        <code>
+        {
+          "resourceType": "Patient",
+          "id": "example",
+          "text": {
+            "status": "generated",
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <table>\n        \n        <tbody>\n          \n          <tr>\n            \n            <td>Name</td>\n            \n            <td>Peter James \n              <b>Chalmers</b> (&quot;Jim&quot;)\n            </td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Address</td>\n            \n            <td>534 Erewhon, Pleasantville, Vic, 3999</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Contacts</td>\n            \n            <td>Home: unknown. Work: (03) 5555 6473</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>MRN: 12345 (Acme Healthcare)</td>\n          \n          </tr>\n        \n        </tbody>\n      \n      </table>    \n    \n    </div>"
+          },
+          "identifier": [
+            {
+              "use": "usual",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v2/0203",
+                    "code": "MR"
+                  }
+                ]
+              },
+              "system": "urn:oid:1.2.36.146.595.217.0.1",
+              "value": "12345",
+              "period": {
+                "start": "2001-05-06"
+              },
+              "assigner": {
+                "display": "Acme Healthcare"
+              }
+            }
+          ],
+          "active": true,
+          "name": [
+            {
+              "use": "official",
+              "family": "Chalmers",
+              "given": [
+                "Peter",
+                "James"
+              ]
+            },
+            {
+              "use": "usual",
+              "given": [
+                "Jim"
+              ]
+            }
+          ],
+          "telecom": [
+            {
+              "use": "home"
+            },
+            {
+              "system": "phone",
+              "value": "(03) 5555 6473",
+              "use": "work"
+            }
+          ],
+          "gender": "male",
+          "birthDate": "1974-12-25",
+          "_birthDate": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+                "valueDateTime": "1974-12-25T14:35:45-05:00"
+              }
+            ]
+          },
+          "deceasedBoolean": false,
+          "address": [
+            {
+              "use": "home",
+              "type": "both",
+              "line": [
+                "534 Erewhon St"
+              ],
+              "city": "PleasantVille",
+              "district": "Rainbow",
+              "state": "Vic",
+              "postalCode": "3999",
+              "period": {
+                "start": "1974-12-25"
+              }
+            }
+          ],
+          "contact": [
+            {
+              "relationship": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/patient-contact-relationship",
+                      "code": "partner"
+                    }
+                  ]
+                }
+              ],
+              "name": {
+                "family": "du Marché",
+                "_family": {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-fix",
+                      "valueString": "VV"
+                    }
+                  ]
+                },
+                "given": [
+                  "Bénédicte"
+                ]
+              },
+              "telecom": [
+                {
+                  "system": "phone",
+                  "value": "+33 (237) 998327"
+                }
+              ],
+              "address": {
+                "use": "home",
+                "type": "both",
+                "line": [
+                  "534 Erewhon St"
+                ],
+                "city": "PleasantVille",
+                "district": "Rainbow",
+                "state": "Vic",
+                "postalCode": "3999",
+                "period": {
+                  "start": "1974-12-25"
+                }
+              },
+              "gender": "female",
+              "period": {
+                "start": "2012"
+              }
+            }
+          ],
+          "managingOrganization": {
+            "reference": "Organization/1"
           }
-        ]
-      },
-      "system": "urn:oid:1.2.36.146.595.217.0.1",
-      "value": "12345",
-      "period": {
-        "start": "2001-05-06"
-      },
-      "assigner": {
-        "display": "Acme Healthcare"
-      }
-    }
-  ],
-  "active": true,
-  "name": [
-    {
-      "use": "official",
-      "family": "Chalmers",
-      "given": [
-        "Peter",
-        "James"
-      ]
-    },
-    {
-      "use": "usual",
-      "given": [
-        "Jim"
-      ]
-    }
-  ],
-  "telecom": [
-    {
-      "use": "home"
-    },
-    {
-      "system": "phone",
-      "value": "(03) 5555 6473",
-      "use": "work"
-    }
-  ],
-  "gender": "male",
-  "birthDate": "1974-12-25",
-  "_birthDate": {
-    "extension": [
-      {
-        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
-        "valueDateTime": "1974-12-25T14:35:45-05:00"
-      }
-    ]
-  },
-  "deceasedBoolean": false,
-  "address": [
-    {
-      "use": "home",
-      "type": "both",
-      "line": [
-        "534 Erewhon St"
-      ],
-      "city": "PleasantVille",
-      "district": "Rainbow",
-      "state": "Vic",
-      "postalCode": "3999",
-      "period": {
-        "start": "1974-12-25"
-      }
-    }
-  ],
-  "contact": [
-    {
-      "relationship": [
+        }
+        </code>
+      </pre>
+
+      <a name="get-coverage"></a>
+      <h3 id="section-heading-h3">Get Coverage for a Beneficiary</h3>
+
+      <pre>
+          <code>/protected/bluebutton/fhir/v1/Coverage/?patient=[fhir_id][_format=json | _format=xml]</code>
+      </pre>
+
+      <p>The above URL returns the Beneficiary's Coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.</p>
+
+      <pre>
+        <code>
         {
-          "coding": [
+          "resourceType": "Coverage",
+          "id": "9876B1",
+          "text": {
+            "status": "generated",
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the coverage</div>"
+          },
+          "identifier": [
             {
-              "system": "http://hl7.org/fhir/patient-contact-relationship",
-              "code": "partner"
+              "system": "http://benefitsinc.com/certificate",
+              "value": "12345"
             }
-          ]
-        }
-      ],
-      "name": {
-        "family": "du Marché",
-        "_family": {
-          "extension": [
+          ],
+          "status": "active",
+          "type": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/v3/ActCode",
+                "code": "EHCPOL",
+                "display": "extended healthcare"
+              }
+            ]
+          },
+          "policyHolder": {
+            "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+          },
+          "subscriber": {
+            "reference": "Patient/4"
+          },
+          "beneficiary": {
+            "reference": "Patient/4"
+          },
+          "relationship": {
+            "coding": [
+              {
+                "code": "self"
+              }
+            ]
+          },
+          "period": {
+            "start": "2011-05-23",
+            "end": "2012-05-23"
+          },
+          "payor": [
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
-              "valueString": "VV"
+              "reference": "Organization/2"
             }
-          ]
-        },
-        "given": [
-          "Bénédicte"
-        ]
-      },
-      "telecom": [
-        {
-          "system": "phone",
-          "value": "+33 (237) 998327"
+          ],
+          "grouping": {
+            "group": "CBI35",
+            "groupDisplay": "Corporate Baker's Inc. Local #35",
+            "subGroup": "123",
+            "subGroupDisplay": "Trainee Part-time Benefits",
+            "plan": "B37FC",
+            "planDisplay": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC",
+            "subPlan": "P7",
+            "subPlanDisplay": "Includes afterlife benefits",
+            "class": "SILVER",
+            "classDisplay": "Silver: Family Plan spouse only",
+            "subClass": "Tier2",
+            "subClassDisplay": "Low deductable, max $20 copay"
+          },
+          "dependent": "0",
+          "sequence": "9"
         }
-      ],
-      "address": {
-        "use": "home",
-        "type": "both",
-        "line": [
-          "534 Erewhon St"
-        ],
-        "city": "PleasantVille",
-        "district": "Rainbow",
-        "state": "Vic",
-        "postalCode": "3999",
-        "period": {
-          "start": "1974-12-25"
-        }
-      },
-      "gender": "female",
-      "period": {
-        "start": "2012"
-      }
-    }
-  ],
-  "managingOrganization": {
-    "reference": "Organization/1"
-  }
-}
-</pre>
+        </code>
+      </pre>
 
-<h3><a id="get-coverage" class="anchor" href="#get-eob" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Coverage for a Beneficiary</h3>
+      <h3 id="section-heading-h3">Sample Client Application:</h3>
+      <p>The CMS Blue Button Sample Client Application demonstrates how to
+        authenticate to the Blue Buttom API and make subsequent FHIR API calls. It uses the OAuth2 confidential flow.</p>
+      <p><a href="https://github.com/HHSIDEAlab/django_bluebutton_client">Download Blue Button Sample Client (Django)</a></p>
 
-<p><pre>/protected/bluebutton/fhir/v1/Coverage/?patient=[fhir_id][_format=json | _format=xml]</pre> </p>
+      <h3 id="section-heading-h3">Support</h3>
+      <p> The CMS Blue Button API Google Group is where you can interact with one another to ask questions, find answers, leave feedback and
+        share experiences using the CMS Blue Button API.</p>
+      <p><a href="https://groups.google.com/forum/#!forum/developer-group-for-cms-blue-button-api">Visit the Google Group</a></p>
 
-<p>The above URL returns the Beneficiary's Coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
-</p>
+  </main>
 
-<pre>
-{
-  "resourceType": "Coverage",
-  "id": "9876B1",
-  "text": {
-    "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the coverage</div>"
-  },
-  "identifier": [
-    {
-      "system": "http://benefitsinc.com/certificate",
-      "value": "12345"
-    }
-  ],
-  "status": "active",
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/v3/ActCode",
-        "code": "EHCPOL",
-        "display": "extended healthcare"
-      }
-    ]
-  },
-  "policyHolder": {
-    "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
-  },
-  "subscriber": {
-    "reference": "Patient/4"
-  },
-  "beneficiary": {
-    "reference": "Patient/4"
-  },
-  "relationship": {
-    "coding": [
-      {
-        "code": "self"
-      }
-    ]
-  },
-  "period": {
-    "start": "2011-05-23",
-    "end": "2012-05-23"
-  },
-  "payor": [
-    {
-      "reference": "Organization/2"
-    }
-  ],
-  "grouping": {
-    "group": "CBI35",
-    "groupDisplay": "Corporate Baker's Inc. Local #35",
-    "subGroup": "123",
-    "subGroupDisplay": "Trainee Part-time Benefits",
-    "plan": "B37FC",
-    "planDisplay": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC",
-    "subPlan": "P7",
-    "subPlanDisplay": "Includes afterlife benefits",
-    "class": "SILVER",
-    "classDisplay": "Silver: Family Plan spouse only",
-    "subClass": "Tier2",
-    "subClassDisplay": "Low deductable, max $20 copay"
-  },
-  "dependent": "0",
-  "sequence": "9"
-}
-</pre>
+  <footer class="usa-footer usa-footer-medium" role="contentinfo">
+    <div class="usa-grid usa-footer-return-to-top">
+      <a href="#">Return to top</a>
+    </div>
+  </footer>
 
-<h3>Sample Client Application:</h3>
-<p>The CMS Blue Button Sample Client Application demonstrates how to 
-  authenticate to the Blue Buttom API and make subsequent FHIR API calls. It uses the OAuth2 confidential flow.</p>
-<p><a href="https://github.com/HHSIDEAlab/django_bluebutton_client">Download Blue Button Sample Client (Django)</a></p>
+  <script src="js/uswds.min.js"></script>
 
-<h2><a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support</h2>
-
-<p> The CMS Blue Button API Google Group is where you can interact with one another to ask questions, find answers, leave feedback and
-  share experiences using the CMS Blue Button API.</p>
-
-<p><a href="https://groups.google.com/forum/#!forum/developer-group-for-cms-blue-button-api">Visit the Google Group</a></p>
+  </body>
 </html>
