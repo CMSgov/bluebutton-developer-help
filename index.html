@@ -100,10 +100,10 @@
       <p>API Endpoints:</p>
       <p>
         <ul>
-          <li><a href="#get-user-profile-openid-connect">Get Profile for Beneficiary</a></li>
-          <li><a href="#get-eob">Get Explanation of Benefit for Beneficiary</a></li>
-          <li><a href="#get-patient">Get Patient Record for Beneficiary</a></li>
-           <li><a href="#get-coverage">Get Coverage for Beneficiary</a></li>
+          <li><a href="#get-user-profile-openid-connect">Get Profile for an Individual Beneficiary</a></li>
+          <li><a href="#get-eob">Get Explanation of Benefit for an Individual for Beneficiary</a></li>
+          <li><a href="#get-patient">Get Patient Record for an Individual Beneficiary</a></li>
+           <li><a href="#get-coverage">Get Coverage for an Individual Beneficiary</a></li>
         </ul>
       </p>
 
@@ -112,7 +112,7 @@
       <p>As a security measure the date of birth, SSN, and HICN are not provided.</p>
 
       <a name="get-user-profile-openid-connect"></a>
-      <h3 id="section-heading-h3">Get Profile for a Beneficiary</h3>
+      <h3 id="section-heading-h3">Get Profile for an Individual Beneficiary</h3>
 
       <pre><code>HTTP  GET /connect/userinfo </code></pre>
 
@@ -136,7 +136,7 @@
       </pre>
 
       <a name="get-eob"></a>
-      <h3 id="section-heading-h3">Get Explanation Of Benefit for Beneficiary</h3>
+      <h3 id="section-heading-h3">Get Explanation Of Benefit for an Individual Beneficiary</h3>
 
       <pre>
         <code>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[fhir_id][_format=json | _format=xml]</code>
@@ -287,7 +287,7 @@
       </pre>
 
       <a name="get-patient"></a>
-      <h3 id="section-heading-h3">Get Patient Record for Beneficiary</h3>
+      <h3 id="section-heading-h3">Get Patient Record for an Individual Beneficiary</h3>
 
       <pre>
           <code>HTTP GET /protected/bluebutton/fhir/v1/Patient/[fhir_id][?_format=json | ?_format=xml]</code>
@@ -439,7 +439,7 @@
       </pre>
 
       <a name="get-coverage"></a>
-      <h3 id="section-heading-h3">Get Coverage for Beneficiary</h3>
+      <h3 id="section-heading-h3">Get Coverage for an Individual Beneficiary</h3>
 
       <pre>
           <code>/protected/bluebutton/fhir/v1/Coverage/?patient=[fhir_id][_format=json | _format=xml]</code>
@@ -523,7 +523,7 @@
       <p><a href="https://github.com/HHSIDEAlab/django_bluebutton_client">Download Blue Button Sample Client (Django)</a></p>
 
       <h3 id="section-heading-h3">Support</h3>
-      <p> The CMS Blue Button API Google Group is where you can interact to ask questions, find answers,
+      <p> The CMS Blue Button API Google Group is where you can interact with other developers to ask questions, find answers,
           leave feedback, and share experiences using the CMS Blue Button API.</p>
       <p><a href="https://groups.google.com/forum/#!forum/developer-group-for-cms-blue-button-api">Visit the Google Group</a></p>
 
