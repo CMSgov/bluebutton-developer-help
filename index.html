@@ -55,7 +55,7 @@
     <aside class="usa-width-one-fourth usa-layout-docs-sidenav">
       <ul class="usa-sidenav-list">
         <li>
-          <a class="usa-current" href="javascript:void(0);"><img src="img/bluebutton-logo-2013.jpg" alt="BlueButton logo" height="25" width="25"> CMS Blue Button API</a>
+          <a class="usa-current" href="javascript:void(0);">CMS Blue Button API</a>
         </li>
         <li>
           <a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Sign Up for the Developer Preview</a>
@@ -72,12 +72,12 @@
     <div class="usa-width-three-fourths usa-layout-docs-main_content">
       <h1> <img src="img/bluebutton-logo-2013.jpg" alt="BlueButton logo" height="75" width="75"> CMS Blue Button<sup>&reg;</sup> API</h1>
       <p class="usa-font-lead">
-        The Centers for Medicare and Medicaid Services (CMS) Blue Button API is a developer-friendly, standards-based, data API that enables Medicare beneficiaries to connect their Medicare claims data to the applications, services, and research programs they trust.
+        The Centers for Medicare and Medicaid Services (CMS) Blue Button API is a developer-friendly, standards-based, data API that will enable Medicare beneficiaries to connect their Medicare claims data to the applications, services, and research programs they trust.
       </p>
 
       <h2 id="section-heading-h2">Join the Developer Preview</h2>
-      <p>CMS is inviting developers to provide feedback on the new CMS Blue Button API
-      for the purpose of improved development. Participants in the Developer Preview can build integrations with their software using sample claims data.</p>
+      <p>CMS is inviting developers to provide feedback on a prototype of the new CMS Blue Button API
+      for the purpose of improved development. Participants in the Developer Preview can build integrations with their software using sample, ficticious, claims data.</p>
       <ul>
         <li>Enables a beneficiary to grant your app access to their data via <a href="http://oauth.net/2">OAuth2</a>
         <li>Gives your app access to three years of Part A, B, and D claims data for a beneficiary
@@ -109,14 +109,14 @@
 
       <p>In each of these API Endpoints, the "sub" value is unused since the client can only return data owned by the access token (i.e. her or his own data).</p>
       <p>If the _format option is omitted, then JSON is returned by default.</p>
-      <p>As a security measure the date of birth, SSN, and HICN are not provided.</p>
+      <p>As a security measure the date of birth, SSN, and HICN will not provided by the CMS Blue Button API.</p>
 
       <a name="get-user-profile-openid-connect"></a>
       <h3 id="section-heading-h3">Get Profile for an Individual Beneficiary</h3>
 
       <pre><code>HTTP  GET /connect/userinfo </code></pre>
 
-      <p>The above URL fetches the beneficiary's basic account information.
+      <p>The above URL fetches the ficticious beneficiary's basic account information.
       This is most often used when creating an account within your application.
       An HTTP GET is called and the response is returned as JSON.</p>
 
@@ -142,7 +142,7 @@
         <code>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[fhir_id][_format=json | _format=xml]</code>
       </pre>
 
-      <p>The above URL returns the beneficiary's Explanation of Benefit (sometimes referred to as an episode of care) as an
+      <p>The above URL returns the ficticious beneficiary's Explanation of Benefit (sometimes referred to as an episode of care) as an
       <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
       The bulk of a beneficiary's data is contained within these ExplanationOfBenefit FHIR resources.</p>
 
@@ -293,7 +293,7 @@
           <code>HTTP GET /protected/bluebutton/fhir/v1/Patient/[fhir_id][?_format=json | ?_format=xml]</code>
       </pre>
 
-      <p>The above URL returns the beneficiary's personal health information as a <a href="http://hl7.org/fhir/explanationofbenefit-examples.html">Patient FHIR Resource</a>.</p>
+      <p>The above URL returns the ficticious beneficiary's personal health information as a <a href="http://hl7.org/fhir/explanationofbenefit-examples.html">Patient FHIR Resource</a>.</p>
 
       <pre>
         <code>
@@ -445,7 +445,7 @@
           <code>/protected/bluebutton/fhir/v1/Coverage/?patient=[fhir_id][_format=json | _format=xml]</code>
       </pre>
 
-      <p>The above URL returns the beneficiary's coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.</p>
+      <p>The above URL returns the ficticious beneficiary's coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.</p>
 
       <pre>
         <code>
