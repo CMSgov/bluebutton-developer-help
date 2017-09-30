@@ -72,19 +72,31 @@
     <div class="usa-width-three-fourths usa-layout-docs-main_content">
       <h1> <img src="img/bluebutton-logo-2013.jpg" alt="BlueButton logo" height="75" width="75"> CMS Blue Button<sup>&reg;</sup> API</h1>
       <p class="usa-font-lead">
-        The Centers for Medicare and Medicaid Services (CMS) Blue Button API is a developer-friendly, standards-based, data API that will enable Medicare beneficiaries to connect their Medicare claims data to the applications, services, and research programs they trust.
+        The Centers for Medicare and Medicaid Services (CMS) Blue Button API is a developer-friendly,
+        standards-based, data API that will enable Medicare beneficiaries to connect
+        their Medicare claims data to the applications, services, and research programs they trust.
+        The CMS Blue Button API will:
       </p>
+
+
+      <ul>
+        <li>Allow an app developer to register an beneficary-facing application via the <a href="http://oauth.net/2">OAuth2</a>
+        delegation standard.</li>
+        
+        <li>Enable a beneficiary to grant an app access to three years of Part A, B, and D claims
+        information. This information is accessed as protected resources via the
+        <a href="http://oauth.net/2">OAuth2</a> delegation standard.</li>
+        
+        <li>Use the HL7 FHIR standard as a format for beneficiary information.</li>
+      </ul>
+
 
       <h2 id="section-heading-h2">Join the Developer Preview</h2>
 
       <p>CMS is inviting developers to provide feedback on a prototype of the new CMS Blue Button API
-      for the purpose of improved development. Participants in the Developer Preview can build integrations with their software using sample, ficticious, claims data.</p>
+      for the purpose of improved development. Participants in the Developer Preview can build
+      integrations with their software using sample, fictitious, claims data.</p>
 
-      <ul>
-        <li>Enables a beneficiary to grant your app access to their data via <a href="http://oauth.net/2">OAuth2</a>
-        <li>Gives your app access to three years of Part A, B, and D claims data for a beneficiary
-        <li>Uses HL7 FHIR specification
-      </ul>
       <p><a class="usa-button usa-button" href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Sign Up for the Developer Preview</a></p>
 
       <h3 id="section-heading-h3">Using the API</h3>
@@ -109,10 +121,10 @@
         </ul>
       </p>
 
-      <p>In each of these API Endpoints, the "sub" value is unused since the client can only return data owned by the access token (i.e. her or his own data).</p>
       <p>If the _format option is omitted, then JSON is returned by default.</p>
 
-      <p>As a security measure the date of birth, SSN, and HICN will not be provided by the CMS Blue Button API.</p>
+      <p>As a security measure the date of birth, SSN, and HICN will not be provided by the
+      CMS Blue Button API.</p>
 
       <a name="get-user-profile-openid-connect"></a>
       <h3 id="section-heading-h3">Get Profile for an Individual Beneficiary</h3>
