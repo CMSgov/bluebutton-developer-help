@@ -145,7 +145,7 @@
           "name": "Fred Flinstone",
           "email": "pebbles-daddy@example.com",
           "created": "2017-11-28",
-          "fhir_id": "123456789",
+          "patient": "123456789",
         }
         </code>
       </pre>
@@ -154,7 +154,7 @@
       <h3 id="section-heading-h3">Get Explanation Of Benefit for an Individual Beneficiary</h3>
 
       <pre>
-        <code>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[fhir_id][_format=json | _format=xml]</code>
+        <code>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[patient][_format=json | _format=xml]</code>
       </pre>
 
       <p>The above URL returns the ficticious beneficiary's Explanation of Benefit (sometimes referred to as an episode of care) as an
@@ -305,7 +305,7 @@
       <h3 id="section-heading-h3">Get Patient Record for an Individual Beneficiary</h3>
 
       <pre>
-          <code>HTTP GET /protected/bluebutton/fhir/v1/Patient/[fhir_id][?_format=json | ?_format=xml]</code>
+          <code>HTTP GET /protected/bluebutton/fhir/v1/Patient/[patient][?_format=json | ?_format=xml]</code>
       </pre>
 
       <p>The above URL returns the ficticious beneficiary's personal health information as a <a href="http://hl7.org/fhir/explanationofbenefit-examples.html">Patient FHIR Resource</a>.</p>
@@ -457,7 +457,7 @@
       <h3 id="section-heading-h3">Get Coverage for an Individual Beneficiary</h3>
 
       <pre>
-          <code>/protected/bluebutton/fhir/v1/Coverage/?patient=[fhir_id][_format=json | _format=xml]</code>
+          <code>/protected/bluebutton/fhir/v1/Coverage/?patient=[patient][_format=json | _format=xml]</code>
       </pre>
 
       <p>The above URL returns the ficticious beneficiary's coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.</p>
