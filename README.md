@@ -8,5 +8,11 @@ This site is published at:
 
 https://hhsidealab.github.io/bluebutton-developer-help/
 
+This site is being moved to a new home under the CMSgov account: https://github.com/cmsgov/bluebutton-developer-help
+
+The new site will be published at:
+
+https://cmsgov.github.io/bluebutton-developer-help/
+
 
 
