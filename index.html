@@ -86,7 +86,7 @@
       <p>
         The CMS Blue Button API will:</p>
       <ul>
-        <li>Allow an app developer to register a beneficary-facing application via the <a href="http://oauth.net/2">OAuth2</a>
+        <li>Allow an app developer to register a beneficiary-facing application via the <a href="http://oauth.net/2">OAuth2</a>
         delegation standard.</li>
 
         <li>Enable a beneficiary to grant an app access to three years of Part A, B, and D claims
@@ -101,13 +101,13 @@
 
       <p>CMS is inviting developers to provide feedback on a prototype of the new CMS Blue Button API
       for the purpose of improved development. Participants in the Developer Preview can build
-      integrations with their software using sample, fictitious, claims data.</p>
+      integrations with their software using synthetic claims data.</p>
 
       <p><a class="usa-button usa-button" href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Sign Up for the Developer Preview</a></p>
 
       <h3 id="section-heading-h3">Using the API</h3>
       <p>During the Developer Preview, you will be able to query a sandbox environment populated with
-      fictitious beneficiary data.</p>
+      synthetic beneficiary claims data.</p>
 
       <p>
         Here's what you can do:
@@ -146,7 +146,7 @@
 
       <pre><code>HTTP GET /connect/userinfo </code></pre>
 
-      <p>The above URL fetches the ficticious beneficiary's basic account information given an Authorization Token.
+      <p>The above URL fetches the synthetic beneficiary's basic account information given an Authorization Token.
       This is most often used when creating an account within your application.
       An HTTP GET is called and the response is returned as JSON.</p>
 
@@ -172,11 +172,11 @@
 
       <pre><code>/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=[fhir_id][_format=json | _format=xml]</code></pre>
 
-      <p>The above URL returns all of the ficticious beneficiary's Explanation of Benefit (sometimes referred to as an episode of care) records as an
+      <p>The above URL returns all of the synthetic beneficiary's Explanation of Benefit (sometimes referred to as an episode of care) records as an
       <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.
       The bulk of a beneficiary's data is contained within these ExplanationOfBenefit FHIR resources.</p>
 
-      <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=3979"</code></pre>
+      <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=20140000008325"</code></pre>
 
       <pre>
         <code>
@@ -323,9 +323,9 @@
 
       <pre><code>HTTP GET /protected/bluebutton/fhir/v1/Patient/[fhir_id][?_format=json | ?_format=xml]</code></pre>
 
-      <p>The above URL returns the ficticious beneficiary's personal health information as a <a href="https://www.hl7.org/fhir/patient.html">Patient FHIR Resource</a>.  This information is mostly contact information, not medical data.</p>
+      <p>The above URL returns the synthetic beneficiary's personal health information as a <a href="https://www.hl7.org/fhir/patient.html">Patient FHIR Resource</a>.  This information is mostly contact information, not medical data.</p>
 
-      <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Patient/3979"</code></pre>
+      <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Patient/20140000008325"</code></pre>
 
       <pre><code>
         {
@@ -475,9 +475,9 @@
       <pre><code>/protected/bluebutton/fhir/v1/Coverage/?patient=[fhir_id][_format=json | _format=xml]</code></pre>
 
 
-      <p>The above URL returns the ficticious beneficiary's coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.</p>
+      <p>The above URL returns the synthetic beneficiary's coverage information as an <a href="http://hl7.org/fhir/explanationofbenefit.html">ExplanationOfBenefit FHIR Resource</a>.</p>
 
-      <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/?patient=3979"</code></pre>
+      <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/?patient=20140000008325"</code></pre>
 
       <pre><code>
         {
@@ -546,10 +546,12 @@
           "sequence": "9"
         }</code></pre>
 
+      <!--
       <h3 id="section-heading-h3">Sample Client Application:</h3>
       <p>The CMS Blue Button Sample Client Application demonstrates how to
         authenticate to the Blue Button API and make subsequent FHIR API calls. It uses the OAuth2 confidential flow.</p>
-      <p><a href="https://github.com/HHSIDEAlab/django_bluebutton_client">Download Blue Button Sample Client (Django)</a></p>
+      <p><a href="https://github.com/CMSgov/bluebutton-sample-client-django">Download Blue Button Sample Client (Django)</a></p>
+      -->
 
       <h3 id="section-heading-h3">Support</h3>
       <p> The CMS Blue Button API Google Group is where you can interact with other developers to ask questions, find answers,
