@@ -58,19 +58,16 @@
           <a class="usa-current" href="javascript:void(0);">CMS Blue Button API</a>
         </li>
         <li>
-          <a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Join the Developer Preview</a>
+          <a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Developer Preview</a>
         </li>
         <li>
-          <a href="https://dev.bluebutton.cms.fhirservice.net/">My Account</a>
-        </li>
-        <li>
-          <a href="  https://groups.google.com/forum/#!topic/developer-group-for-cms-blue-button-api/O2BbU0z8dzM">API Quick Start</a>
+          <a href="#try-it-out">Try the API</a>
         </li>
         <li>
           <a href="https://dev.bluebutton.cms.fhirservice.net/devdocs/">Interactive Documentation</a>
         </li>
         <li>
-          <a href="https://groups.google.com/forum/#!forum/developer-group-for-cms-blue-button-api">Google Group</a>
+          <a href="https://groups.google.com/forum/#!forum/developer-group-for-cms-blue-button-api">Support</a>
         </li>
       </ul>
     </aside>
@@ -552,6 +549,57 @@
         authenticate to the Blue Button API and make subsequent FHIR API calls. It uses the OAuth2 confidential flow.</p>
       <p><a href="https://github.com/CMSgov/bluebutton-sample-client-django">Download Blue Button Sample Client (Django)</a></p>
       -->
+
+      <a name="try-it-out"></a>
+      <h3 id="section-heading-h3">Try the API</h3>
+      <p>
+      To test out the Blue Button API, you must first generate a sample token that represents a Beneficiary granting consent.  </p>
+
+      <ol>
+        <li><a href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">Join the Developer Preview</a></li>
+        <li>Register your application</li>
+        <li>Generate a sample token</li>
+        <li>Call the API</li>
+      </ol>
+
+      <P>
+      You can generate an access token for synthetic Patient 20140000008325 and sample Application <i>TestApp</i> by following these steps:
+    </p>
+
+    <ol>
+      <li>Click <a target="_new" href="https://dev.bluebutton.cms.fhirservice.net/testclient/">here</a> to begin</li>
+      <li>Click "sample Authorization flow"</li>
+      <li>Click the link to authorize.  This will start the authorization flow to TestApp</li>
+      <li>Login to your Blue Button Developer Preview Account  (click <a target="_new" href="https://dev.bluebutton.cms.fhirservice.net/accounts/request-invite">here</a> if you need to Join the Developer Preview)</li>
+      <li>Agree to the Personal Health Information Sharing disclaimer (sample)</li>
+      <li>Review the App Endorsements and click to accept risks (sample)</li>
+      <li>Review the permissions TestApp is asking for and approve (sample)</li>
+      <li>You will see a JSON document containing your access token and other information</li>
+    </ol>
+
+    <pre><code>curl --header "Authorization: Bearer YOUR TOKEN HERE" https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Patient/20140000008325</code></pre>
+
+    <p>
+      <b>To try this out in Postman:</b>
+    </p>
+    <ol>
+      <li>From Postman, open a new tab</li>
+      <li>Paste the Request URL: https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Patient/20140000008325</li>
+      <li>Click "Authorization" and select type "Bearer Token"</li>
+      <li>Locate the "access_token" value from your JSON document. Ex: "access_token": "Sb9npoXXXXXXXXXXCQP8JK4tR"</li>
+      <li>Paste the access_token value into the "Token" field</li>
+      <li>Click "Preview Request" and see a success message "Request headers were successfully updated with authorization data for preview."</li>
+      <li>Click "Send" and see the synthetic beneficiary's personal health information as a Patient FHIR Resource display under "Body" in Postman.</li>
+    </ol>
+    <p>
+      In the response, you will find:
+    </p>
+    <ul>
+      <li>32 total claims (140 total claim lines)</li>
+      <li>25 carrier claims (110 carrier claim lines)</li>
+      <li>2 inpatient claims (25 inpatient claim lines)</li>
+      <li>5 Part D events</li>
+    </ul>
 
       <h3 id="section-heading-h3">Support</h3>
       <p> The CMS Blue Button API Google Group is where you can interact with other developers to ask questions, find answers,
