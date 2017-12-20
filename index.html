@@ -327,143 +327,47 @@
       <pre><code>
         {
           "resourceType": "Patient",
-          "id": "example",
-          "text": {
-            "status": "generated",
-            "div": " ... a HTML table of contact info will display here ..."
-          },
-          "identifier": [
+          "id": "20140000008325",
+          "extension": [
             {
-              "use": "usual",
-              "type": {
+              "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+              "valueCodeableConcept": {
                 "coding": [
                   {
-                    "system": "http://hl7.org/fhir/v2/0203",
-                    "code": "MR"
+                    "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/race.txt",
+                    "code": "1"
                   }
                 ]
-              },
-              "system": "urn:oid:1.2.36.146.595.217.0.1",
-              "value": "12345",
-              "period": {
-                "start": "2001-05-06"
-              },
-              "assigner": {
-                "display": "Acme Healthcare"
               }
             }
           ],
-          "active": true,
+          "identifier": [
+            {
+              "system": "http://bluebutton.cms.hhs.gov/identifier#bene_id",
+              "value": "20140000008325"
+            },
+            {
+              "system": "http://bluebutton.cms.hhs.gov/identifier#hicnHash",
+              "value": "2025fbc612a884853f0c245e686780bf748e5652360ecd7430575491f4e018c5"
+            }
+          ],
           "name": [
             {
-              "use": "official",
-              "family": "Chalmers",
-              "given": [
-                "Peter",
-                "James"
-              ]
-            },
-            {
               "use": "usual",
-              "given": [
-                "Jim"
-              ]
+              "family": "Doe",
+              "given": ["Jane", "X"]
             }
           ],
-          "telecom": [
-            {
-              "use": "home"
-            },
-            {
-              "system": "phone",
-              "value": "(03) 5555 6473",
-              "use": "work"
-            }
-          ],
-          "gender": "male",
-          "birthDate": "1974-12-25",
-          "_birthDate": {
-            "extension": [
-              {
-                "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
-                "valueDateTime": "1974-12-25T14:35:45-05:00"
-              }
-            ]
-          },
-          "deceasedBoolean": false,
+          "gender": "unknown",
+          "birthDate": "2014-06-01",
           "address": [
             {
-              "use": "home",
-              "type": "both",
-              "line": [
-                "534 Erewhon St"
-              ],
-              "city": "PleasantVille",
-              "district": "Rainbow",
-              "state": "Vic",
-              "postalCode": "3999",
-              "period": {
-                "start": "1974-12-25"
-              }
+              "district": "999",
+              "state": "15",
+              "postalCode": "99999"
             }
-          ],
-          "contact": [
-            {
-              "relationship": [
-                {
-                  "coding": [
-                    {
-                      "system": "http://hl7.org/fhir/patient-contact-relationship",
-                      "code": "partner"
-                    }
-                  ]
-                }
-              ],
-              "name": {
-                "family": "du Marché",
-                "_family": {
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-fix",
-                      "valueString": "VV"
-                    }
-                  ]
-                },
-                "given": [
-                  "Bénédicte"
-                ]
-              },
-              "telecom": [
-                {
-                  "system": "phone",
-                  "value": "+33 (237) 998327"
-                }
-              ],
-              "address": {
-                "use": "home",
-                "type": "both",
-                "line": [
-                  "534 Erewhon St"
-                ],
-                "city": "PleasantVille",
-                "district": "Rainbow",
-                "state": "Vic",
-                "postalCode": "3999",
-                "period": {
-                  "start": "1974-12-25"
-                }
-              },
-              "gender": "female",
-              "period": {
-                "start": "2012"
-              }
-            }
-          ],
-          "managingOrganization": {
-            "reference": "Organization/1"
-          }
-        }
-        </code>
+          ]
+        }        </code>
       </pre>
 
       <a name="get-coverage"></a>
@@ -478,70 +382,159 @@
 
       <pre><code>
         {
-          "resourceType": "Coverage",
-          "id": "9876B1",
-          "text": {
-            "status": "generated",
-            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the coverage</div>"
+          "resourceType": "Bundle",
+          "id": "28d26ab6-2043-4afd-8c9a-835c0ff3e179",
+          "meta": {
+            "lastUpdated": "2017-12-20T10:21:08.565-05:00"
           },
-          "identifier": [
+          "type": "searchset",
+          "total": 3,
+          "link": [
             {
-              "system": "http://benefitsinc.com/certificate",
-              "value": "12345"
+              "relation": "self",
+              "url": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/?_format=application%2Fjson%2Bfhir&beneficiary=Patient%2F20140000008325"
             }
           ],
-          "status": "active",
-          "type": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/v3/ActCode",
-                "code": "EHCPOL",
-                "display": "extended healthcare"
-              }
-            ]
-          },
-          "policyHolder": {
-            "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
-          },
-          "subscriber": {
-            "reference": "Patient/4"
-          },
-          "beneficiary": {
-            "reference": "Patient/4"
-          },
-          "relationship": {
-            "coding": [
-              {
-                "code": "self"
-              }
-            ]
-          },
-          "period": {
-            "start": "2011-05-23",
-            "end": "2012-05-23"
-          },
-          "payor": [
+          "entry": [
             {
-              "reference": "Organization/2"
+              "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-a-20140000008325", "resource": {
+                "resourceType": "Coverage",
+                "id": "part-a-20140000008325",
+                "extension": [
+                  {
+                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt", "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+                          "code": "10"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/orec.txt",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/orec.txt",
+                          "code": "0"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/crec.txt",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/crec.txt",
+                          "code": "0"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/esrd_ind.txt",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/esrd_ind.txt",
+                          "code": "0"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "status": "active",
+                "type": {
+                  "coding": [
+                    {
+                      "system": "Medicare",
+                      "code": "Part A"
+                    }
+                  ]
+                },
+                "beneficiary": {
+                  "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
+                },
+                "grouping": {
+                  "subGroup": "Medicare",
+                  "subPlan": "Part A"
+                }
+              }
+            },
+            {
+              "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-b-20140000008325", "resource": {
+                "resourceType": "Coverage",
+                "id": "part-b-20140000008325",
+                "extension": [
+                  {
+                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt", "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+                          "code": "10"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "status": "active",
+                "type": {
+                  "coding": [
+                    {
+                      "system": "Medicare",
+                      "code": "Part B"
+                    }
+                  ]
+                },
+                "beneficiary": {
+                  "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
+                },
+                "grouping": {
+                  "subGroup": "Medicare",
+                  "subPlan": "Part B"
+                }
+              }
+            },
+            {
+              "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-d-20140000008325",
+              "resource": {
+                "resourceType": "Coverage",
+                "id": "part-d-20140000008325",
+                "extension": [
+                  {
+                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+                    "valueCodeableConcept": {
+                      "coding": [
+                        {
+                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+                          "code": "10"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "type": {
+                  "coding": [
+                    {
+                      "system": "Medicare",
+                      "code": "Part D"
+                    }
+                  ]
+                },
+                "beneficiary": {
+                  "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
+                },
+                "grouping": {
+                  "subGroup": "Medicare",
+                  "subPlan": "Part D"
+                }
+              }
             }
-          ],
-          "grouping": {
-            "group": "CBI35",
-            "groupDisplay": "Corporate Baker's Inc. Local #35",
-            "subGroup": "123",
-            "subGroupDisplay": "Trainee Part-time Benefits",
-            "plan": "B37FC",
-            "planDisplay": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC",
-            "subPlan": "P7",
-            "subPlanDisplay": "Includes afterlife benefits",
-            "class": "SILVER",
-            "classDisplay": "Silver: Family Plan spouse only",
-            "subClass": "Tier2",
-            "subClassDisplay": "Low deductable, max $20 copay"
-          },
-          "dependent": "0",
-          "sequence": "9"
-        }</code></pre>
+          ]
+        }
+      </code></pre>
 
       <!--
       <h3 id="section-heading-h3">Sample Client Application:</h3>
