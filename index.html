@@ -149,20 +149,16 @@
 
       <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN" "https://dev.bluebutton.cms.fhirservice.net/connect/userinfo" </code></pre>
 
-      <pre>
-        <code>
-        {
-          "sub": "fflinstone",
-          "prefered_username": "fflinstone",
-          "given_name": "Fred",
-          "family_name:, "Flinstone,
-          "name": "Fred Flinstone",
-          "email": "pebbles-daddy@example.com",
-          "created": "2017-11-28",
-          "patient": "123456789",
-        }
-        </code>
-      </pre>
+      <pre><code>{
+  "sub": "fflinstone",
+  "prefered_username": "fflinstone",
+  "given_name": "Fred",
+  "family_name:, "Flinstone,
+  "name": "Fred Flinstone",
+  "email": "pebbles-daddy@example.com",
+  "created": "2017-11-28",
+  "patient": "123456789",
+}</code></pre>
 
       <a name="get-eob"></a>
       <h3 id="section-heading-h3">Get all Explanation Of Benefit records for an Individual Beneficiary</h3>
@@ -175,145 +171,141 @@
 
       <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/ExplanationOfBenefit/?patient=20140000008325"</code></pre>
 
-      <pre>
-        <code>
+      <pre><code>{
+  "resourceType": "ExplanationOfBenefit",
+  "id": "EB3500",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ExplanationOfBenefit</div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.BenefitsInc.com/fhir/explanationofbenefit",
+      "value": "987654321"
+    }
+  ],
+  "status": "active",
+  "type": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ex-claimtype",
+        "code": "oral"
+      }
+    ]
+  },
+  "patient": {
+    "reference": "Patient/pat1"
+  },
+  "created": "2014-08-16",
+  "organization": {
+    "reference": "Organization/2"
+  },
+  "claim": {
+    "reference": "Claim/100150"
+  },
+  "claimResponse": {
+    "reference": "ClaimResponse/R3500"
+  },
+  "outcome": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/remittance-outcome",
+        "code": "complete"
+      }
+    ]
+  },
+  "disposition": "Claim settled as per contract.",
+  "careTeam": [
+    {
+      "sequence": 1,
+      "provider": {
+        "reference": "Practitioner/example"
+      }
+    }
+  ],
+  "insurance": {
+    "coverage": {
+      "reference": "Coverage/9876B1"
+    }
+  },
+  "item": [
+    {
+      "sequence": 1,
+      "careTeamLinkId": [
+        1
+      ],
+      "service": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/service-uscls",
+            "code": "1200"
+          }
+        ]
+      },
+      "servicedDate": "2014-08-16",
+      "unitPrice": {
+        "value": 135.57,
+        "system": "urn:iso:std:iso:4217",
+        "code": "USD"
+      },
+      "net": {
+        "value": 135.57,
+        "system": "urn:iso:std:iso:4217",
+        "code": "USD"
+      },
+      "adjudication": [
         {
-          "resourceType": "ExplanationOfBenefit",
-          "id": "EB3500",
-          "text": {
-            "status": "generated",
-            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ExplanationOfBenefit</div>"
-          },
-          "identifier": [
-            {
-              "system": "http://www.BenefitsInc.com/fhir/explanationofbenefit",
-              "value": "987654321"
-            }
-          ],
-          "status": "active",
-          "type": {
+          "category": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/ex-claimtype",
-                "code": "oral"
+                "code": "eligible"
               }
             ]
           },
-          "patient": {
-            "reference": "Patient/pat1"
-          },
-          "created": "2014-08-16",
-          "organization": {
-            "reference": "Organization/2"
-          },
-          "claim": {
-            "reference": "Claim/100150"
-          },
-          "claimResponse": {
-            "reference": "ClaimResponse/R3500"
-          },
-          "outcome": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/remittance-outcome",
-                "code": "complete"
-              }
-            ]
-          },
-          "disposition": "Claim settled as per contract.",
-          "careTeam": [
-            {
-              "sequence": 1,
-              "provider": {
-                "reference": "Practitioner/example"
-              }
-            }
-          ],
-          "insurance": {
-            "coverage": {
-              "reference": "Coverage/9876B1"
-            }
-          },
-          "item": [
-            {
-              "sequence": 1,
-              "careTeamLinkId": [
-                1
-              ],
-              "service": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/service-uscls",
-                    "code": "1200"
-                  }
-                ]
-              },
-              "servicedDate": "2014-08-16",
-              "unitPrice": {
-                "value": 135.57,
-                "system": "urn:iso:std:iso:4217",
-                "code": "USD"
-              },
-              "net": {
-                "value": 135.57,
-                "system": "urn:iso:std:iso:4217",
-                "code": "USD"
-              },
-              "adjudication": [
-                {
-                  "category": {
-                    "coding": [
-                      {
-                        "code": "eligible"
-                      }
-                    ]
-                  },
-                  "amount": {
-                    "value": 120.00,
-                    "system": "urn:iso:std:iso:4217",
-                    "code": "USD"
-                  }
-                },
-                {
-                  "category": {
-                    "coding": [
-                      {
-                        "code": "eligpercent"
-                      }
-                    ]
-                  },
-                  "value": 0.80
-                },
-                {
-                  "category": {
-                    "coding": [
-                      {
-                        "code": "benefit"
-                      }
-                    ]
-                  },
-                  "amount": {
-                    "value": 96.00,
-                    "system": "urn:iso:std:iso:4217",
-                    "code": "USD"
-                  }
-                }
-              ]
-            }
-          ],
-          "totalCost": {
-            "value": 135.57,
+          "amount": {
+            "value": 120.00,
             "system": "urn:iso:std:iso:4217",
             "code": "USD"
+          }
+        },
+        {
+          "category": {
+            "coding": [
+              {
+                "code": "eligpercent"
+              }
+            ]
           },
-          "totalBenefit": {
+          "value": 0.80
+        },
+        {
+          "category": {
+            "coding": [
+              {
+                "code": "benefit"
+              }
+            ]
+          },
+          "amount": {
             "value": 96.00,
             "system": "urn:iso:std:iso:4217",
             "code": "USD"
           }
         }
-        </code>
-      </pre>
+      ]
+    }
+  ],
+  "totalCost": {
+    "value": 135.57,
+    "system": "urn:iso:std:iso:4217",
+    "code": "USD"
+  },
+  "totalBenefit": {
+    "value": 96.00,
+    "system": "urn:iso:std:iso:4217",
+    "code": "USD"
+  }
+}</code></pre>
 
       <a name="get-patient"></a>
       <h3 id="section-heading-h3">Get all Patient Records for an Individual Beneficiary</h3>
@@ -324,50 +316,49 @@
 
       <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Patient/20140000008325"</code></pre>
 
-      <pre><code>
-        {
-          "resourceType": "Patient",
-          "id": "20140000008325",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/race.txt",
-                    "code": "1"
-                  }
-                ]
-              }
-            }
-          ],
-          "identifier": [
-            {
-              "system": "http://bluebutton.cms.hhs.gov/identifier#bene_id",
-              "value": "20140000008325"
-            },
-            {
-              "system": "http://bluebutton.cms.hhs.gov/identifier#hicnHash",
-              "value": "2025fbc612a884853f0c245e686780bf748e5652360ecd7430575491f4e018c5"
-            }
-          ],
-          "name": [
-            {
-              "use": "usual",
-              "family": "Doe",
-              "given": ["Jane", "X"]
-            }
-          ],
-          "gender": "unknown",
-          "birthDate": "2014-06-01",
-          "address": [
-            {
-              "district": "999",
-              "state": "15",
-              "postalCode": "99999"
-            }
-          ]
-        }        </code>
+      <pre><code>{
+  "resourceType": "Patient",
+  "id": "20140000008325",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/race.txt",
+            "code": "1"
+          }
+        ]
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "http://bluebutton.cms.hhs.gov/identifier#bene_id",
+      "value": "20140000008325"
+    },
+    {
+      "system": "http://bluebutton.cms.hhs.gov/identifier#hicnHash",
+      "value": "2025fbc612a884853f0c245e686780bf748e5652360ecd7430575491f4e018c5"
+    }
+  ],
+  "name": [
+    {
+      "use": "usual",
+      "family": "Doe",
+      "given": ["Jane", "X"]
+    }
+  ],
+  "gender": "unknown",
+  "birthDate": "2014-06-01",
+  "address": [
+    {
+      "district": "999",
+      "state": "15",
+      "postalCode": "99999"
+    }
+  ]
+}</code>
       </pre>
 
       <a name="get-coverage"></a>
@@ -380,169 +371,159 @@
 
       <pre><code>curl --header "Authorization: Bearer AUTHORIZATION TOKEN"  "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/?patient=20140000008325"</code></pre>
 
-      <pre><code>
-        {
-          "resourceType": "Bundle",
-          "id": "28d26ab6-2043-4afd-8c9a-835c0ff3e179",
-          "meta": {
-            "lastUpdated": "2017-12-20T10:21:08.565-05:00"
-          },
-          "type": "searchset",
-          "total": 3,
-          "link": [
-            {
-              "relation": "self",
-              "url": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/?_format=application%2Fjson%2Bfhir&beneficiary=Patient%2F20140000008325"
+      <pre><code>{
+  "resourceType": "Bundle",
+  "id": "28d26ab6-2043-4afd-8c9a-835c0ff3e179",
+  "meta": {
+    "lastUpdated": "2017-12-20T10:21:08.565-05:00"
+  },
+  "type": "searchset",
+  "total": 3,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/?_format=application%2Fjson%2Bfhir&beneficiary=Patient%2F20140000008325"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-a-20140000008325", "resource": {
+        "resourceType": "Coverage",
+        "id": "part-a-20140000008325",
+        "extension": [
+          {
+            "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt", "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+                  "code": "10"
+                }
+              ]
             }
-          ],
-          "entry": [
-            {
-              "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-a-20140000008325", "resource": {
-                "resourceType": "Coverage",
-                "id": "part-a-20140000008325",
-                "extension": [
-                  {
-                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt", "valueCodeableConcept": {
-                      "coding": [
-                        {
-                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
-                          "code": "10"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/orec.txt",
-                    "valueCodeableConcept": {
-                      "coding": [
-                        {
-                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/orec.txt",
-                          "code": "0"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/crec.txt",
-                    "valueCodeableConcept": {
-                      "coding": [
-                        {
-                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/crec.txt",
-                          "code": "0"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/esrd_ind.txt",
-                    "valueCodeableConcept": {
-                      "coding": [
-                        {
-                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/esrd_ind.txt",
-                          "code": "0"
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "status": "active",
-                "type": {
-                  "coding": [
-                    {
-                      "system": "Medicare",
-                      "code": "Part A"
-                    }
-                  ]
-                },
-                "beneficiary": {
-                  "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
-                },
-                "grouping": {
-                  "subGroup": "Medicare",
-                  "subPlan": "Part A"
+          },
+          {
+            "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/orec.txt",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/orec.txt",
+                  "code": "0"
                 }
-              }
-            },
-            {
-              "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-b-20140000008325", "resource": {
-                "resourceType": "Coverage",
-                "id": "part-b-20140000008325",
-                "extension": [
-                  {
-                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt", "valueCodeableConcept": {
-                      "coding": [
-                        {
-                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
-                          "code": "10"
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "status": "active",
-                "type": {
-                  "coding": [
-                    {
-                      "system": "Medicare",
-                      "code": "Part B"
-                    }
-                  ]
-                },
-                "beneficiary": {
-                  "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
-                },
-                "grouping": {
-                  "subGroup": "Medicare",
-                  "subPlan": "Part B"
+              ]
+            }
+          },
+          {
+            "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/crec.txt",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/crec.txt",
+                  "code": "0"
                 }
-              }
-            },
-            {
-              "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-d-20140000008325",
-              "resource": {
-                "resourceType": "Coverage",
-                "id": "part-d-20140000008325",
-                "extension": [
-                  {
-                    "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
-                    "valueCodeableConcept": {
-                      "coding": [
-                        {
-                          "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
-                          "code": "10"
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "type": {
-                  "coding": [
-                    {
-                      "system": "Medicare",
-                      "code": "Part D"
-                    }
-                  ]
-                },
-                "beneficiary": {
-                  "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
-                },
-                "grouping": {
-                  "subGroup": "Medicare",
-                  "subPlan": "Part D"
+              ]
+            }
+          },
+          {
+            "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/esrd_ind.txt",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/esrd_ind.txt",
+                  "code": "0"
                 }
-              }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "Medicare",
+              "code": "Part A"
             }
           ]
+        },
+        "beneficiary": {
+          "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
+        },
+        "grouping": {
+          "subGroup": "Medicare",
+          "subPlan": "Part A"
         }
-      </code></pre>
-
-      <!--
-      <h3 id="section-heading-h3">Sample Client Application:</h3>
-      <p>The CMS Blue Button Sample Client Application demonstrates how to
-        authenticate to the Blue Button API and make subsequent FHIR API calls. It uses the OAuth2 confidential flow.</p>
-      <p><a href="https://github.com/CMSgov/bluebutton-sample-client-django">Download Blue Button Sample Client (Django)</a></p>
-      -->
-
+      }
+    },
+    {
+      "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-b-20140000008325", "resource": {
+        "resourceType": "Coverage",
+        "id": "part-b-20140000008325",
+        "extension": [
+          {
+            "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt", "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+                  "code": "10"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "Medicare",
+              "code": "Part B"
+            }
+          ]
+        },
+        "beneficiary": {
+          "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
+        },
+        "grouping": {
+          "subGroup": "Medicare",
+          "subPlan": "Part B"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://dev.bluebutton.cms.fhirservice.net/protected/bluebutton/fhir/v1/Coverage/part-d-20140000008325",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "part-d-20140000008325",
+        "extension": [
+          {
+            "url": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://www.ccwdata.org/cs/groups/public/documents/datadictionary/ms_cd.txt",
+                  "code": "10"
+                }
+              ]
+            }
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "Medicare",
+              "code": "Part D"
+            }
+          ]
+        },
+        "beneficiary": {
+          "reference": "Patient?identifier=CCW.BENE_ID|20140000008325"
+        },
+        "grouping": {
+          "subGroup": "Medicare",
+          "subPlan": "Part D"
+        }
+      }
+    }
+  ]
+}</code></pre>
       <a name="try-it-out"></a>
       <h3 id="section-heading-h3">Try the API</h3>
       <p>
