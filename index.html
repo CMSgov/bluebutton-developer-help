@@ -26,6 +26,9 @@
           <a href="#resources">Core Resources</a>
         </li>
         <li>
+          <a href="#synthetic-data">Synthetic Data</a>
+        </li>
+        <li>
           <a href="#support">Support</a>
         </li>
       </ul>
@@ -137,7 +140,21 @@
       <pre><code>https://dev.bluebutton.cms.fhirservice.net</code></pre>
 
       <p><b>Authorization:</b></p>
-      <p>The authorization and token URL endpoints implement <a href="https://oauth.net/2/">OAuth 2.0</a>.</p>
+
+      <p>
+      To use the Blue Button <a href="https://oauth.net/2/">OAuth</a>, you need to go through two separate processes. First, you must create a Developer Preview account and register your application to gain the credentials necessary to request access. Next, you must develop your application to correctly make requests and handle the responses from both the user's browser and the Blue Button servers.
+      </p>
+      <!--
+      <p>
+      Below you will find a list of sample MyMedicare.gov accounts you can use to test your Blue Button OAuth implementation.
+      </p>
+      <p>
+      <i>Jane Doe Username: janedoe Password: password HICN: 123443211234</i>
+      <br/>
+      <i>John Doe Username: johndoe Password: password HICN: 123443211235</i>
+      </p>
+      -->
+
       <pre><code>HTTP  GET /o/authorize </code> </pre>
       <pre><code>HTTP  POST /o/token </code> </pre>
 
@@ -544,6 +561,22 @@
     }
   ]
 }</code></pre>
+
+      <a name="synthetic-data"></a>
+      <h2 id="section-heading-h2">Synthetic Data</h2>
+      <p>
+        For testing purposes, the CMS Blue Button API originally used a fake data set. This means that each claim—including its dates, codings, dollar amounts—was not based in reality, and that values were not associated with one another. For example, a claim for an annual checkup could have shown a $5,000 amount with a date of January 2020.
+      </p>
+      <p>
+        In December 2017, the CMS Blue Button API launched a new synthetic data set for developers to test against. This means that each claim returns a realistic value. For example, if a patient is prescribed the diabetes medication Metformin, the associated cost and date of this prescription will be accurate.
+      </p>
+      <p>
+        Please note that this synthetic data set does not represent a longitudinal patient view. The claims—though representative independently—are shuffled and randomly assigned to patients. To build the synthetic data set, we selected a number of random claims, and shuffling them like a deck of cards among a group of fictitious Patient IDs. This will allow developers to test the Blue Button API system, but could result in a patient with records for contradictory procedures.
+      </p>
+      <p>
+        <a href="https://groups.google.com/forum/#!topic/Developer-group-for-cms-blue-button-api/fXg_QhBlOp8">Read More</a>
+      </p>
+
       <a name="support"></a>
       <h2 id="section-heading-h2">Support</h2>
       <p> The CMS Blue Button API Google Group is where you can interact with other Developers to ask questions, find answers,
