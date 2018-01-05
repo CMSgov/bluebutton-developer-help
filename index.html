@@ -17,7 +17,7 @@
           <a class="usa-current" href="javascript:void(0);">CMS Blue Button API</a>
         </li>
         <li>
-          <a href="#Developer-preview">Developer Preview</a>
+          <a href="#developer-preview">Developer Preview</a>
         </li>
         <li>
           <a href="#try-it-out">Try the API</a>
@@ -26,10 +26,13 @@
           <a href="#resources">Core Resources</a>
         </li>
         <li>
+          <a href="#codesets">FHIR Data Model</a>
+        </li>
+        <li>
           <a href="#synthetic-data">Synthetic Data</a>
         </li>
         <li>
-          <a href="#codesets">FHIR Data Model</a>
+          <a href="#jack">Meet "Jack"</a>
         </li>
         <li>
           <a href="#support">Support</a>
@@ -53,7 +56,7 @@
         <li>Uses the <a href="https://www.hl7.org/fhir/">HL7 FHIR</a> standard for Beneficiary data and the <a href="http://oauth.net/2">OAuth 2.0</a> standard for Beneficiary authorization
       </ul>
 
-      <a name="Developer-preview"></a>
+      <a name="developer-preview"></a>
       <h2 id="section-heading-h2">Join the Developer Preview</h2>
 
       <p>CMS is inviting Developers to provide feedback on the new CMS Blue Button API
@@ -149,14 +152,14 @@
       </p>
       <!--
       <p>
-      Below you will find a list of sample MyMedicare.gov accounts you can use to test your Blue Button OAuth implementation.
+      Below you will find a list of sample accounts you can use to test your Blue Button OAuth implementation.  These accounts mimic valid MyMedicare.gov accounts but have reduced functionality.  For example, you cannot test the "Forgot Password" flow.
       </p>
       <p>
       <i>Jane Doe Username: janedoe Password: password HICN: 123443211234</i>
       <br/>
       <i>John Doe Username: johndoe Password: password HICN: 123443211235</i>
       </p>
-      -->
+    -->
 
       <pre><code>HTTP  GET /o/authorize </code> </pre>
       <pre><code>HTTP  POST /o/token </code> </pre>
@@ -595,6 +598,15 @@ The Blue Button API FHIR Data Model leverages Coding Systems specific to Medicar
       </p>
       <p>
         <a href="https://groups.google.com/forum/#!topic/Developer-group-for-cms-blue-button-api/fXg_QhBlOp8">Read More</a>
+      </p>
+
+      <a name="jack"></a>
+      <h2 id="section-heading-h2">Meet "Jack"</h2>
+      <p>
+        "Jack" is a hypothetical 70 year-old male with Type 2 Diabetes and high blood pressure.  Jack takes daily medication and his Doctor told him he needs to lose weight.  He takes Glimepiride to help control his blood sugar and previously was on Metformin.
+      </p>
+      <p>
+        <a href="Jack-Persona.pdf">Learn more about "Jack" (PDF)</a>
       </p>
 
       <a name="support"></a>
